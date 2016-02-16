@@ -1,0 +1,128 @@
+<div class="shaarli-menu pure-g" id="shaarli-menu">
+  <div class="pure-u-lg-0 pure-u-1">
+    <div class="pure-menu">
+      <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}"
+        class="pure-menu-link">
+        <i class="fa fa-home"></i>
+      </a>
+      <a href="#" class="menu-toggle" id="menu-toggle"><s class="bar"></s><s class="bar"></s></a>
+    </div>
+  </div>
+  <div class="pure-u-1">
+    <div class="pure-menu menu-transform pure-menu-horizontal">
+      <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-selected pure-u-0 pure-u-lg-visible">
+          <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}"
+            class="pure-menu-link">
+            <i class="fa fa-home"></i>
+          </a>
+        </li>
+        {if="isLoggedIn()"}
+          <li class="pure-menu-item">
+            <a href="?do=addlink" class="pure-menu-link">Shaare</a>
+          </li>
+          <li class="pure-menu-item">
+            <a href="?do=tools" class="pure-menu-link">Tools</a>
+          </li>
+
+        {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
+          <li class="pure-menu-item">
+            <a href="?do=addlink" class="pure-menu-link">Shaare</a>
+          </li>
+          <li class="pure-menu-item">
+            <a href="?do=tools" class="pure-menu-link">Tools</a>
+          </li>
+        {else}
+          <li class="pure-menu-item">
+            <a href="?do=login" class="pure-menu-link">Login</a>
+          </li>
+        {/if}
+        <li class="pure-menu-item">
+          <a href="{$feedurl}?do=rss{$searchcrits}" class="pure-menu-link">RSS Feed</a>
+        </li>
+        {if="$GLOBALS['config']['SHOW_ATOM']"}
+          <li class="pure-menu-item">
+            <a href="{$feedurl}?do=atom{$searchcrits}" class="pure-menu-link">ATOM Feed</a>
+          </li>
+        {/if}
+        <li class="pure-menu-item">
+          <a href="?do=tagcloud" class="pure-menu-link">Tag cloud</a>
+        </li>
+        <li class="pure-menu-item">
+          <a href="?do=picwall{$searchcrits}" class="pure-menu-link">Picture wall</a>
+        </li>
+        <li class="pure-menu-item">
+          <a href="?do=daily" class="pure-menu-link">Daily</a>
+        </li>
+        <!-- FIXME! update plugin system to handle this -->
+        {loop="$plugins_header.buttons_toolbar"}
+          <li class="pure-menu-item">
+            <a href="{$value.url}" class="pure-menu-link">{$value.title}</a>
+          </li>
+        {/loop}
+        {if="isLoggedIn()"}
+          <li class="pure-menu-item">
+            <a href="?do=logout" class="pure-menu-link">Logout</a>
+          </li>
+        {else}
+          <li class="pure-menu-item">
+            <a href="?do=login" class="pure-menu-link">Login</a>
+          </li>
+        {/if}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div id="logo" title="Share your links !" onclick="document.location='?';"></div>
+
+<div id="linkcount" class="nomobile">
+    {if="!empty($linkcount)"}{$linkcount} links{/if}
+</div>
+
+<div id="menu">
+  <ul>
+      <li><span id="shaarli_title">
+        <a href="{$titleLink}">{$shaarlititle}</a>
+    </span>
+    </li>
+
+{if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
+    {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
+{else}
+<li><a href="?" class="nomobile">Home</a></li>
+    {if="isLoggedIn()"}
+    <li><a href="?do=logout">Logout</a></li>
+    <li><a href="?do=tools">Tools</a></li>
+    <li><a href="?do=addlink">Add link</a></li>
+    {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
+    <li><a href="?do=tools">Tools</a></li>
+    <li><a href="?do=addlink">Add link</a></li>
+    {else}
+    <li><a href="?do=login">Login</a></li>
+    {/if}
+    <li><a href="{$feedurl}?do=rss{$searchcrits}" class="nomobile">RSS Feed</a></li>
+    {if="$GLOBALS['config']['SHOW_ATOM']"}
+    <li><a href="{$feedurl}?do=atom{$searchcrits}" class="nomobile">ATOM Feed</a></li>
+    {/if}
+    <li><a href="?do=tagcloud">Tag cloud</a></li>
+    <li><a href="?do=picwall{$searchcrits}">Picture wall</a></li>
+    <li><a href="?do=daily">Daily</a></li>
+    {loop="$plugins_header.buttons_toolbar"}
+        {$value}
+    {/loop}
+{/if}
+  </ul>
+</div>
+
+{if="!empty($plugin_errors) && isLoggedIn()"}
+    <ul class="errors">
+        {loop="plugin_errors"}
+            <li>{$value}</li>
+        {/loop}
+    </ul>
+{/if}
+
+<div class="clear"></div>
+
+

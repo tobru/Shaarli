@@ -1,0 +1,108 @@
+body {
+    background: url(../img/noise.png) #979797;
+}
+
+header {
+
+}
+
+/**
+ * MENU
+ **/
+.pure-menu {
+    /*position: fixed;*/
+    background: #16a085;
+}
+
+.pure-menu-selected {
+    background: #049372;
+}
+
+.pure-menu-link,
+.pure-menu-link:visited,
+.pure-menu-selected .pure-menu-link,
+.pure-menu-selected .pure-menu-link:visited {
+    color: #b0ddce;
+}
+
+.pure-menu-link:hover,
+.pure-menu-selected .pure-menu-link:hover {
+    color: #fff;
+    background: transparent;
+}
+
+.shaarli-menu {
+    margin-bottom: 1em;
+    -webkit-font-smoothing: antialiased;
+    /* Hack to transition with auto height: http://stackoverflow.com/a/8331169/1484919 */
+    max-height: 2.1em;
+    transition: max-height 0.5s;
+    overflow: hidden;
+}
+
+.shaarli-menu.open {
+    max-height: 500px;
+    transition: max-height 0.75s;
+}
+
+.menu-toggle {
+    width: 34px;
+    height: 34px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.menu-toggle .bar {
+    background-color: #b0ddce;
+    display: block;
+    width: 20px;
+    height: 2px;
+    border-radius: 100px;
+    position: absolute;
+    top: 18px;
+    right: 7px;
+    transition: all 0.5s;
+}
+
+.menu-toggle .bar:first-child {
+    transform: translateY(-6px);
+}
+
+.menu-toggle.x .bar {
+    transform: rotate(45deg);
+}
+
+.menu-toggle.x .bar:first-child {
+    transform: rotate(-45deg);
+}
+
+@media screen and (max-width: 64em) {
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/**
+ * Extends Pure grids responsive to hide items.
+ * Use xx-0 to hide an item on xx screen.
+ * Display it at any level with xx-visible.
+ */
+.pure-u-0 { display: none !important; }
+@media screen and (min-width: 35.5em) {
+    .pure-u-sm-0 { display: none !important; }
+    .pure-u-sm-visible { display: inherit !important; }
+}
+@media screen and (min-width: 48em) {
+    .pure-u-md-0 { display: none !important; }
+    .pure-u-md-visible { display: inherit !important; }
+}
+@media screen and (min-width: 64em) {
+    .pure-u-lg-0 { display: none !important; }
+    .pure-u-lg-visible { display: inherit !important; }
+}
+@media screen and (min-width: 80em) {
+    .pure-u-xl-0 { display: none !important; }
+    .pure-u-xl-visible { display: inherit !important; }
+}
