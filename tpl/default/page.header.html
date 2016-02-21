@@ -1,6 +1,7 @@
 <div class="shaarli-menu pure-g" id="shaarli-menu">
   <div class="pure-u-lg-0 pure-u-1">
     <div class="pure-menu">
+      <!-- FIXME! default value in PHP -->
       <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}"
         class="pure-menu-link">
         <i class="fa fa-home"></i>
@@ -74,46 +75,47 @@
   </div>
 </div>
 
-<div id="logo" title="Share your links !" onclick="document.location='?';"></div>
+<div id="header" class="pure-u-0 pure-u-lg-visible">
+  <h1 id="header-title">
+    <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}">
+      {$GLOBALS['title']}
+    </a>
+  </h1>
+  <div id="linkcount">
+    {if="!empty($linkcount)"}<span class="strong">{$linkcount}</span> shaares{/if}
+  </div>
 
-<div id="linkcount" class="nomobile">
-    {if="!empty($linkcount)"}{$linkcount} links{/if}
+  <div id="search">
+    <form method="GET" class="searchform" name="searchform">
+      <input type="text" tabindex="1" id="searchform_value" name="searchterm" placeholder="Search text"
+        {if="!empty($search_crits) && $search_type=='fulltext'"}
+          value="{$search_crits}"
+        {/if}
+      >
+      <input type="submit" value="Search" class="bigbutton">
+    </form>
+    <form method="GET" class="tagfilter" name="tagfilter">
+      <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="Filter by tag"
+        {if="!empty($search_crits) && $search_type=='tags'"}
+          value="{function="implode(' ', $search_crits)"}"
+        {/if}
+        autocomplete="off" class="awesomplete" data-multiple data-minChars="1"
+        data-list="{loop="$tags"}{$key}, {/loop}"
+      >
+      <input type="submit" value="Search" class="bigbutton">
+    </form>
+  </div>
 </div>
 
-<div id="menu">
-  <ul>
-      <li><span id="shaarli_title">
-        <a href="{$titleLink}">{$shaarlititle}</a>
-    </span>
-    </li>
+<div id="content">
+
 
 {if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
     {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
 {else}
-<li><a href="?" class="nomobile">Home</a></li>
-    {if="isLoggedIn()"}
-    <li><a href="?do=logout">Logout</a></li>
-    <li><a href="?do=tools">Tools</a></li>
-    <li><a href="?do=addlink">Add link</a></li>
-    {elseif="$GLOBALS['config']['OPEN_SHAARLI']"}
-    <li><a href="?do=tools">Tools</a></li>
-    <li><a href="?do=addlink">Add link</a></li>
-    {else}
-    <li><a href="?do=login">Login</a></li>
-    {/if}
-    <li><a href="{$feedurl}?do=rss{$searchcrits}" class="nomobile">RSS Feed</a></li>
-    {if="$GLOBALS['config']['SHOW_ATOM']"}
-    <li><a href="{$feedurl}?do=atom{$searchcrits}" class="nomobile">ATOM Feed</a></li>
-    {/if}
-    <li><a href="?do=tagcloud">Tag cloud</a></li>
-    <li><a href="?do=picwall{$searchcrits}">Picture wall</a></li>
-    <li><a href="?do=daily">Daily</a></li>
-    {loop="$plugins_header.buttons_toolbar"}
-        {$value}
-    {/loop}
+
 {/if}
-  </ul>
-</div>
+
 
 {if="!empty($plugin_errors) && isLoggedIn()"}
     <ul class="errors">
@@ -124,5 +126,3 @@
 {/if}
 
 <div class="clear"></div>
-
-

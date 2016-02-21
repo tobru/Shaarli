@@ -1,21 +1,64 @@
+/**
+ * General
+ */
 body {
-    background: url(../img/noise.png) #979797;
+
 }
 
-header {
+.strong {
+    font-weight: bold;
+}
 
+.clear {
+    clear: both;
+}
+
+/**
+ * Extends Pure grids responsive to hide items.
+ * Use xx-0 to hide an item on xx screen.
+ * Display it at any level with xx-visible.
+ */
+.pure-u-0 { display: none !important; }
+@media screen and (min-width: 35.5em) {
+    .pure-u-sm-0 { display: none !important; }
+    .pure-u-sm-visible { display: inherit !important; }
+}
+@media screen and (min-width: 48em) {
+    .pure-u-md-0 { display: none !important; }
+    .pure-u-md-visible { display: inherit !important; }
+}
+@media screen and (min-width: 64em) {
+    .pure-u-lg-0 { display: none !important; }
+    .pure-u-lg-visible { display: inherit !important; }
+}
+@media screen and (min-width: 80em) {
+    .pure-u-xl-0 { display: none !important; }
+    .pure-u-xl-visible { display: inherit !important; }
 }
 
 /**
  * MENU
  **/
-.pure-menu {
-    /*position: fixed;*/
-    background: #16a085;
+.shaarli-menu {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #1b926c;
+    -webkit-font-smoothing: antialiased;
+    /* Hack to transition with auto height: http://stackoverflow.com/a/8331169/1484919 */
+    max-height: 2.1em;
+    transition: max-height 0.5s;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.shaarli-menu.open {
+    max-height: 500px;
+    transition: max-height 0.75s;
 }
 
 .pure-menu-selected {
-    background: #049372;
+    background: #1A694C;
 }
 
 .pure-menu-link,
@@ -27,22 +70,8 @@ header {
 
 .pure-menu-link:hover,
 .pure-menu-selected .pure-menu-link:hover {
-    color: #fff;
+    color: #d1fff0;
     background: transparent;
-}
-
-.shaarli-menu {
-    margin-bottom: 1em;
-    -webkit-font-smoothing: antialiased;
-    /* Hack to transition with auto height: http://stackoverflow.com/a/8331169/1484919 */
-    max-height: 2.1em;
-    transition: max-height 0.5s;
-    overflow: hidden;
-}
-
-.shaarli-menu.open {
-    max-height: 500px;
-    transition: max-height 0.75s;
 }
 
 .menu-toggle {
@@ -85,24 +114,62 @@ header {
 }
 
 /**
- * Extends Pure grids responsive to hide items.
- * Use xx-0 to hide an item on xx screen.
- * Display it at any level with xx-visible.
+ * Header
  */
-.pure-u-0 { display: none !important; }
-@media screen and (min-width: 35.5em) {
-    .pure-u-sm-0 { display: none !important; }
-    .pure-u-sm-visible { display: inherit !important; }
+#header {
+    width: 100%;
+    height: 150px;
+    background: url(../img/noise.png), #1fa67a url(../img/logo.png) no-repeat fixed center 2.5em;
 }
-@media screen and (min-width: 48em) {
-    .pure-u-md-0 { display: none !important; }
-    .pure-u-md-visible { display: inherit !important; }
+
+#header h1 {
+    position: fixed;
+    float: left;
+    margin: 45px 0 0 0;
+    width: 44%;
+    height: 100px;
+    text-align: right;
 }
-@media screen and (min-width: 64em) {
-    .pure-u-lg-0 { display: none !important; }
-    .pure-u-lg-visible { display: inherit !important; }
+
+#header h1 a, #header h1 a:visited {
+    /* https://css-tricks.com/centering-css-complete-guide/#vertical-inline-multiple */
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    overflow: hidden;
+    height: 100px;
+    color: #b0ddce;
+    text-decoration: none;
+    z-index: 1;
+
+    /* TODO: font? */
 }
-@media screen and (min-width: 80em) {
-    .pure-u-xl-0 { display: none !important; }
-    .pure-u-xl-visible { display: inherit !important; }
+
+#header h1 a:hover {
+    color: #d1fff0;
+}
+
+#linkcount {
+    position: fixed;
+    top: 40px;
+    right: 10px;
+    color: #b0ddce;
+    font-size: 0.8em;
+}
+
+#search {
+    position: fixed;
+    top: 55px;
+    right: 10px;
+    width: 44%;
+    text-align: right;
+}
+
+#content {
+    position: relative;
+    box-shadow: 0 -2px 1em #797979;
+    z-index: 2;
+    background: url(../img/noise.png) #979797;
 }
