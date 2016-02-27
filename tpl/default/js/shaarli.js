@@ -40,3 +40,13 @@
 
     window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
 })(this, this.document);
+
+var searchInputs = document.querySelectorAll('#search input[type="text"]');
+[].forEach.call(searchInputs, function(searchInput) {
+    searchInput.addEventListener('focus', function(event) {
+        event.target.style.width = '250px';
+    });
+    searchInput.addEventListener('blur', function(event) {
+        event.target.style.width = '140px';
+    });
+});

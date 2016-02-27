@@ -119,16 +119,15 @@ body {
 #header {
     width: 100%;
     height: 150px;
-    background: url(../img/noise.png), #1fa67a url(../img/logo.png) no-repeat fixed center 2.5em;
+    background: url(../img/noise.png), #1fa67a url(../img/logo2.png) no-repeat fixed 10px 2.5em;
 }
 
 #header h1 {
     position: fixed;
     float: left;
-    margin: 45px 0 0 0;
-    width: 44%;
+    margin: 45px 0 0 125px;
+    width: 55%;
     height: 100px;
-    text-align: right;
 }
 
 #header h1 a, #header h1 a:visited {
@@ -152,7 +151,8 @@ body {
 }
 
 #linkcount {
-    position: fixed;
+    /* position: fixed; */
+    position: absolute;
     top: 40px;
     right: 10px;
     color: #b0ddce;
@@ -160,13 +160,43 @@ body {
 }
 
 #search {
-    position: fixed;
-    top: 55px;
+    /**
+     * Can't make it work with awesomplete list z-index. Any idea?
+     * position: fixed;
+     */
+    position: absolute;
+    top: 60px;
     right: 10px;
-    width: 44%;
+    width: 30%;
     text-align: right;
 }
 
+#search input[type="text"] {
+    margin: 0 0 5px 0;
+    padding: 5px 5px 3px 15px;
+    height: 20px;
+    width: 140px;
+    transition: width .5s ease;
+    background: #1b926c;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
+    color: #b0ddce;
+}
+
+#search button {
+    background: transparent;
+    border: none;
+    color: #b0ddce;
+}
+
+#search button:hover {
+    color: #fff;
+}
+
+/**
+ * CONTENT
+ */
 #content {
     position: relative;
     box-shadow: 0 -2px 1em #797979;
