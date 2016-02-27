@@ -195,11 +195,97 @@ body {
 }
 
 /**
- * CONTENT
+ * CONTENT - GENERAL
  */
 #content {
     position: relative;
     box-shadow: 0 -2px 1em #797979;
     z-index: 2;
     background: url(../img/noise.png) #979797;
+}
+
+/**
+ * CONTENT - LINKLIST PAGING
+ */
+@media screen and (min-width: 35.5em) {
+    .linklist-paging {
+        margin: 2.1em 0 0 0;
+    }
+}
+
+@media screen and (min-width: 64em) {
+    .linklist-paging {
+        margin: 0;
+    }
+}
+
+.linklist-filters {
+    margin: 10px 0;
+    color: #252525;
+}
+
+.linklist-filters span {
+    margin: 0 0 0 10px;
+}
+
+.linklist-filters a {
+    padding: 2px 5px;
+    text-decoration: none;
+}
+
+.linklist-filters .filter-off {
+    color: #252525;
+    background: #c8c8c8;
+}
+
+.linklist-filters .filter-on {
+    color: #b0ddce;
+    background: #1b926c;
+}
+
+.linklist-pages {
+    margin: 10px 0;
+    color: #252525;
+    text-align: center;
+}
+
+.linklist-pages a {
+    color: #252525;
+    text-decoration: none;
+}
+
+.linklist-pages a:hover {
+    color: #fff;
+}
+
+.linksperpage {
+    margin: 10px 0;
+    text-align: right;
+    color: #252525;
+}
+
+.linksperpage a {
+    padding: 2px 5px;
+    text-decoration: none;
+    color: #252525;
+    background: #c8c8c8;
+    border: solid 1px #979797;
+}
+
+.linksperpage form {
+    display: inline;
+    margin: 0 10px 0 0;
+}
+
+.linksperpage input[type="text"] {
+    width: 28px;
+    height: 20px;
+    margin: 0 0 5px 0;
+    padding: 3px 5px 3px 8px;
+    background: #c8c8c8;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
+    color: #252525;
+    font-size: 0.8em;
 }
