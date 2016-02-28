@@ -13,6 +13,18 @@ body {
     clear: both;
 }
 
+.label {
+    display: inline-block;
+    padding: .25em .4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
 /**
  * Extends Pure grids responsive to hide items.
  * Use xx-0 to hide an item on xx screen.
@@ -288,4 +300,156 @@ body {
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
     color: #252525;
     font-size: 0.8em;
+}
+
+/**
+ * CONTENT - LINKLIST ITEMS
+ */
+.linklist-item {
+    margin: 15px 0;
+    background: #fff;
+    box-shadow: 2px 2px 0.5em #797979;
+}
+
+.linklist-item-title, .linklist-item-title h2  {
+    margin: 0;
+}
+
+.linklist-item-title {
+    background: #20b988 url(../img/noise.png);
+    border-bottom: 1px solid #1b926c;
+    box-shadow: 1px 1px 0.2em #1b926c;
+}
+
+.linklist-item-title h2 {
+    padding: 2px 10px;
+    line-height: 25px;
+}
+
+.linklist-item-title a {
+    font-size: 0.6em;
+    color: #d0fff0;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.linklist-item-title a:hover {
+    color: #fff;
+}
+
+.linklist-item-title .label-private {
+    border: solid 1px #d0fff0;
+}
+
+.linklist-item-editbuttons {
+    float: right;
+    padding: 5px;
+}
+
+.linklist-item-editbuttons a {
+    font-size: 1em;
+}
+
+.linklist-item-description {
+    padding: 10px;
+}
+
+.linklist-item-infos {
+    padding: 5px;
+    background: #ddd url(../img/noise.png);
+    border-top: 1px solid #989898;
+    box-shadow: 1px -1px 0.2em #989898;
+    color: #252525;
+    font-size: 0.8em;
+}
+
+.linklist-item-infos a {
+    color: #505050;
+    text-decoration: none;
+}
+
+.linklist-item-infos a:hover {
+    color: #000;
+}
+
+.linklist-item-infos .label-tag {
+    border: 1px solid #505050;
+    font-size: 0.9em;
+}
+
+.linklist-item-infos .label-tag:hover {
+    border: 1px solid #000;
+}
+
+.linklist-item-infos-url {
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/**
+ * CONTENT - LINKLIST ITEMS
+ */
+.linklist-item {
+    margin: 15px 0;
+    background: #fff;
+    box-shadow: 2px 2px 0.5em #797979;
+}
+
+.linklist-item-title, .linklist-item-title h2  {
+    margin: 0;
+}
+
+.linklist-item-title {
+    background: #20b988 url(../img/noise.png);
+    border-bottom: 1px solid #1b926c;
+    box-shadow: 1px 1px 0.2em #1b926c;
+}
+
+.linklist-item-title h2 {
+    padding: 2px 10px;
+    line-height: 25px;
+}
+
+.linklist-item-title a {
+    font-size: 0.6em;
+    color: #d0fff0;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.linklist-item-title a:hover {
+    color: #fff;
+}
+
+.linklist-item-editbuttons {
+    float: right;
+    padding: 5px;
+}
+
+.linklist-item-editbuttons a {
+    font-size: 1em;
+}
+
+.linklist-item-description {
+    padding: 10px;
+}
+
+.linklist-item-infos {
+    padding: 5px;
+    background: #ddd url(../img/noise.png);
+    border-top: 1px solid #989898;
+    box-shadow: 1px -1px 0.2em #989898;
+    color: #252525;
+    font-size: 0.8em;
+}
+
+.linklist-item-infos a {
+    color: #000;
+    text-decoration: none;
+}
+
+.linklist-item-infos a:hover {
+    color: #252525;
 }

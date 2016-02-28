@@ -1,99 +1,130 @@
 <!DOCTYPE html>
 <html>
 <head>
-    {include="includes"}
+  {include="includes"}
 </head>
 <body>
 {include="page.header"}
 
-    <!--{loop="$plugins_header.fields_toolbar"}
-        {$value}
-    {/loop}-->
+<!--{loop="$plugins_header.fields_toolbar"}
+    {$value}
+{/loop}-->
 
 <div id="linklist">
 
-    {include="linklist.paging"}
+  {include="linklist.paging"}
 
-    <div id="plugin_zone_start_linklist" class="plugin_zone">
-        {loop="$plugin_start_zone"}
-        {$value}
-        {/loop}
-    </div>
+  <div id="plugin_zone_start_linklist" class="plugin_zone">
+    {loop="$plugin_start_zone"}
+      {$value}
+    {/loop}
+  </div>
 
-    {if="count($links)==0"}
-        <div id="searchcriteria">Nothing found.</i></div>
-    {else}
-        {if="$search_type=='fulltext'"}
-            <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
-        {/if}
-        {if="$search_type=='tags'"}
-            <div id="searchcriteria">{$result_count} results for tags <i>
-            {loop="search_crits"}
-                <span class="linktag" title="Remove tag">
-                    <a href="?removetag={function="urlencode($value)"}">{$value} <span class="remove">x</span></a>
-                </span>
-            {/loop}</i></div>
-        {/if}
+  <!-- TODO: Search results. -->
+  {if="count($links)==0"}
+    <div id="searchcriteria">Nothing found.</div>
+  {else}
+    {if="$search_type=='fulltext'"}
+      <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
     {/if}
-    <ul>
-        {loop="links"}
-        <li{if="$value.class"} class="{$value.class}"{/if}>
-            <a id="{$value.shorturl}"></a>
-            <div class="thumbnail">{$value.url|thumbnail}</div>
-            <div class="linkcontainer">
-                {if="isLoggedIn()"}
-                    <div class="linkeditbuttons">
-                        <form method="GET" class="buttoneditform">
-                            <input type="hidden" name="edit_link" value="{$value.linkdate}">
-                            <input type="image" alt="Edit" src="images/edit_icon.png#" title="Edit" class="button_edit">
-                        </form><br>
-                        <form method="POST" class="buttoneditform">
-                            <input type="hidden" name="lf_linkdate" value="{$value.linkdate}">
-                            <input type="hidden" name="token" value="{$token}">
-                            <input type="hidden" name="delete_link">
-                            <input type="image" alt="Delete" src="images/delete_icon.png#" title="Delete"
-                                   class="button_delete" onClick="return confirmDeleteLink();">
-                        </form>
-                    </div>
-                {/if}
-                <span class="linktitle">
-                    <a href="{$value.real_url}">{$value.title}</a>
-                </span>
-                <br>
-                {if="$value.description"}<div class="linkdescription">{$value.description}</div>{/if}
-                {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
-                    <span class="linkdate" title="Permalink"><a href="?{$value.linkdate|smallHash}">{function="strftime('%c', $value.timestamp)"} - permalink</a> - </span>
+    {if="$search_type=='tags'"}
+      <div id="searchcriteria">{$result_count} results for tags <i>
+      {loop="search_crits"}
+        <span class="linktag" title="Remove tag">
+            <a href="?removetag={function="urlencode($value)"}">{$value} <span class="remove">x</span></a>
+        </span>
+      {/loop}</i></div>
+    {/if}
+  {/if}
+  <div class="pure-g">
+    <div class="pure-u-2-24"></div>
+    <div class="pure-u-20-24">
+      {loop="links"}
+        <div class="linklist-item{if="$value.class"} {$value.class}{/if}">
+
+          <div class="linklist-item-title">
+            {if="isLoggedIn()"}
+              <div class="linklist-item-editbuttons">
+                <a href="#" title="Fold" class="fold-button"><i class="fa fa-chevron-up"></i></a>
+                <a href="?edit_link={$value.linkdate}" title="Edit"><i class="fa fa-pencil-square-o"></i></a>
+                <a href="?delete_link={$value.linkdate}&amp;token={$token}" title="Delete"><i class="fa fa-trash"></i></a>
+              </div>
+            {/if}
+
+            <h2>
+              <a href="{$value.real_url}" id="{$value.shorturl}">
+                {if="strpos($value.url, $value.shorturl) === false"}
+                  <i class="fa fa-external-link"></i>
                 {else}
-                    <span class="linkdate" title="Short link here"><a href="?{$value.shorturl}">permalink</a> - </span>
+                  <i class="fa fa-sticky-note"></i>
                 {/if}
+
+                {if="$value.private"}
+                  <span class="label label-private">Private</span>
+                {/if}
+
+                {$value.title}
+              </a>
+            </h2>
+          </div>
+
+          <div class="linklist-item-thumbnail">{$value.url|thumbnail}</div>
+
+          {if="$value.description"}
+            <div class="linklist-item-description">
+              {$value.description}
+            </div>
+          {/if}
+
+          <div class="linklist-item-infos">
+            {if="$value.tags"}
+              <div class="linklist-item-tags">
+                <i class="fa fa-tags"></i>
+                {loop="value.taglist"}
+                  <span class="label label-tag" title="Add tag">
+                    <a href="?addtag={$value|urlencode}">{$value}</a>
+                  </span>
+                {/loop}
+              </div>
+            {/if}
+
+            <div class="pure-g">
+              <div class="pure-u-lg-5-8 pure-u-sm-1">
+                <a href="?{$value.shorturl}" title="Permalink">
+                  {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
+                    <span class="linkdate">
+                      <i class="fa fa-clock-o"></i>
+                      {function="strftime('%d %B %Y %H:%M', $value.timestamp)"} &middot;
+                    </span>
+                  {/if}
+                  permalink &middot;
+                </a>
 
                 {loop="$value.link_plugin"}
-                    <span>{$value}</span> -
+                  <span>{$value}</span> &middot;
                 {/loop}
-
-                <a href="{$value.real_url}"><span class="linkurl" title="Short link">{$value.url}</span></a><br>
-                {if="$value.tags"}
-                    <div class="linktaglist">
-                    {loop="value.taglist"}<span class="linktag" title="Add tag"><a href="?addtag={$value|urlencode}">{$value}</a></span> {/loop}
-                    </div>
-                {/if}
-
-
+              </div>
+              <div class="linklist-item-infos-url pure-u-lg-3-8 pure-u-sm-1">
+                <a href="{$value.real_url}"><span class="linkurl" title="Short link">{$value.url}</span></a>
+              </div>
             </div>
-        </li>
-    {/loop}
-    </ul>
-
-    <div id="plugin_zone_end_linklist" class="plugin_zone">
-        {loop="$plugin_end_zone"}
-            {$value}
-        {/loop}
+          </div>
+        </div>
+      {/loop}
     </div>
+  </div>
+</div>
 
-    {include="linklist.paging"}
+  <div id="plugin_zone_end_linklist" class="plugin_zone">
+    {loop="$plugin_end_zone"}
+    {$value}
+    {/loop}
+  </div>
+
+  {include="linklist.paging"}
 
 </div>
 
-    {include="page.footer"}
+{include="page.footer"}
 </body>
 </html>
