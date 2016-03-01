@@ -477,6 +477,10 @@ body {
     border: solid 1px #d0fff0;
 }
 
+.linklist-item-title .fold-button {
+    display: none;
+}
+
 .linklist-item-editbuttons {
     float: right;
     padding: 5px;
