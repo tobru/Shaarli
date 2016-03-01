@@ -473,6 +473,10 @@ body {
     color: #fff;
 }
 
+.linklist-item-title .label-private {
+    border: solid 1px #d0fff0;
+}
+
 .linklist-item-editbuttons {
     float: right;
     padding: 5px;
@@ -496,10 +500,26 @@ body {
 }
 
 .linklist-item-infos a {
-    color: #000;
+    color: #505050;
     text-decoration: none;
 }
 
 .linklist-item-infos a:hover {
-    color: #252525;
+    color: #000;
+}
+
+.linklist-item-infos .label-tag {
+    border: 1px solid #505050;
+    font-size: 0.9em;
+}
+
+.linklist-item-infos .label-tag:hover {
+    border: 1px solid #000;
+}
+
+.linklist-item-infos-url {
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
