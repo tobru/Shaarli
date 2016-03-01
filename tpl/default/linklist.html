@@ -52,7 +52,7 @@
             {/if}
 
             <h2>
-              <a href="{$value.real_url}" id="{$value.shorturl}">
+              <a href="{$value.real_url}" id="{$value.shorturl}" class="linklist-link">
                 {if="strpos($value.url, $value.shorturl) === false"}
                   <i class="fa fa-external-link"></i>
                 {else}
@@ -100,12 +100,16 @@
                   permalink &middot;
                 </a>
 
+                {$link_plugin_counter=count($value.link_plugin)}
                 {loop="$value.link_plugin"}
-                  <span>{$value}</span> &middot;
+                  <span>{$value}</span>
+                  {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
                 {/loop}
               </div>
               <div class="linklist-item-infos-url pure-u-lg-3-8 pure-u-sm-1">
-                <a href="{$value.real_url}"><span class="linkurl" title="Short link">{$value.url}</span></a>
+                <a href="{$value.real_url}" title="{$value.title}">
+                  <i class="fa fa-link"></i> {$value.url}
+                </a>
               </div>
             </div>
           </div>

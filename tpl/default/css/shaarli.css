@@ -25,6 +25,17 @@ body {
     border-radius: .25rem;
 }
 
+@font-face {
+    font-family: 'Roboto Slab';
+    font-weight: 400;
+    font-style: normal;
+    src:
+    local('Fira Sans'),
+    local('Fira-Sans-regular'),
+    url('../fonts/Fira-Sans-regular.woff2') format('woff2'),
+    url('../fonts/Fira-Sans-regular.woff') format('woff');
+}
+
 /**
  * Extends Pure grids responsive to hide items.
  * Use xx-0 to hide an item on xx screen.
@@ -155,7 +166,8 @@ body {
     text-decoration: none;
     z-index: 1;
 
-    /* TODO: font? */
+    font-family: Roboto Slab, Arial, sans-serif;
+    font-size: 1.2em;
 }
 
 #header h1 a:hover {
@@ -307,7 +319,7 @@ body {
  */
 .linklist-item {
     margin: 15px 0;
-    background: #fff;
+    background: #f5f5f5;
     box-shadow: 2px 2px 0.5em #797979;
 }
 
@@ -322,23 +334,31 @@ body {
 }
 
 .linklist-item-title h2 {
-    padding: 2px 10px;
+    padding: 3px 10px 0 10px;
     line-height: 25px;
 }
 
 .linklist-item-title a {
-    font-size: 0.6em;
+    font-size: 0.7em;
     color: #d0fff0;
     text-decoration: none;
     vertical-align: middle;
+    font-family: Roboto Slab, Arial, sans-serif;
 }
 
-.linklist-item-title a:hover {
+.linklist-item-title .linklist-link:visited {
+    color: #ddd;
+}
+
+.linklist-item-title a:hover, .linklist-item-title .linklist-link:hover{
     color: #fff;
 }
 
+
 .linklist-item-title .label-private {
     border: solid 1px #d0fff0;
+    font-family: Arial, sans-serif;
+    font-size: 0.65em;
 }
 
 .linklist-item-title .fold-button {
@@ -356,6 +376,20 @@ body {
 
 .linklist-item-description {
     padding: 10px;
+    font-family: Roboto Slab, Arial, sans-serif;
+}
+
+.linklist-item-description a {
+    text-decoration: none;
+    color: #1b926c;
+}
+
+.linklist-item-description a:hover {
+    text-shadow: 1px 1px #ddd;
+}
+
+.linklist-item-description a:visited {
+    color: #20b988;
 }
 
 .linklist-item-infos {
@@ -376,6 +410,10 @@ body {
     color: #000;
 }
 
+.linklist-item-tags {
+    margin: 0 0 5px 0;
+}
+
 .linklist-item-infos .label-tag {
     border: 1px solid #505050;
     font-size: 0.9em;
@@ -383,6 +421,11 @@ body {
 
 .linklist-item-infos .label-tag:hover {
     border: 1px solid #000;
+}
+
+.linklist-plugin-icon {
+    width: 13px;
+    height: 13px;
 }
 
 .linklist-item-infos-url {
