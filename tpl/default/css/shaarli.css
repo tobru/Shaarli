@@ -2,7 +2,7 @@
  * General
  */
 body {
-
+    background: url(../img/noise.png) #979797;
 }
 
 .strong {
@@ -44,19 +44,19 @@ body {
 .pure-u-0 { display: none !important; }
 @media screen and (min-width: 35.5em) {
     .pure-u-sm-0 { display: none !important; }
-    .pure-u-sm-visible { display: inherit !important; }
+    .pure-u-sm-visible { display: inline-block !important; }
 }
 @media screen and (min-width: 48em) {
     .pure-u-md-0 { display: none !important; }
-    .pure-u-md-visible { display: inherit !important; }
+    .pure-u-md-visible { display: inline-block !important; }
 }
 @media screen and (min-width: 64em) {
     .pure-u-lg-0 { display: none !important; }
-    .pure-u-lg-visible { display: inherit !important; }
+    .pure-u-lg-visible { display: inline-block !important; }
 }
 @media screen and (min-width: 80em) {
     .pure-u-xl-0 { display: none !important; }
-    .pure-u-xl-visible { display: inherit !important; }
+    .pure-u-xl-visible { display: inline-block !important; }
 }
 
 /**
@@ -223,7 +223,10 @@ body {
  */
 #content {
     position: relative;
-    box-shadow: 0 -2px 1em #797979;
+    /* https://css-tricks.com/fighting-the-space-between-inline-block-elements/ */
+    margin-top: -4px;
+    /* Hack-ish way to only shadow the top part. */
+    box-shadow: 0 -20px 20px -20px #797979;
     z-index: 2;
     background: url(../img/noise.png) #979797;
 }
@@ -231,7 +234,7 @@ body {
 /**
  * CONTENT - LINKLIST PAGING
  */
-@media screen and (min-width: 35.5em) {
+@media screen and (max-width: 64em) {
     .linklist-paging {
         margin: 2.1em 0 0 0;
     }

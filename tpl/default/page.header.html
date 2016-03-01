@@ -5,13 +5,14 @@
       <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}"
         class="pure-menu-link">
         <i class="fa fa-home"></i>
+        {$GLOBALS['title']}
       </a>
       <a href="#" class="menu-toggle" id="menu-toggle"><s class="bar"></s><s class="bar"></s></a>
     </div>
   </div>
   <div class="pure-u-1">
-    <div class="pure-menu menu-transform pure-menu-horizontal">
-      <ul class="pure-menu-list">
+    <div class="pure-menu menu-transform pure-menu-horizontal pure-g">
+      <ul class="pure-menu-list pure-u-lg-11-12 pure-u-sm-1">
         <li class="pure-menu-item pure-menu-selected pure-u-0 pure-u-lg-visible">
           <a href="{if="!empty($GLOBALS['titleLink'])"}{$GLOBALS['titleLink']}{else}?{/if}"
             class="pure-menu-link">
@@ -33,19 +34,10 @@
           <li class="pure-menu-item">
             <a href="?do=tools" class="pure-menu-link">Tools</a>
           </li>
-        {else}
-          <li class="pure-menu-item">
-            <a href="?do=login" class="pure-menu-link">Login</a>
-          </li>
         {/if}
-        <li class="pure-menu-item">
-          <a href="{$feedurl}?do=rss{$searchcrits}" class="pure-menu-link">RSS Feed</a>
+        <li class="pure-menu-item pure-u-lg-0">
+          <a href="?do=atom{$searchcrits}" class="pure-menu-link">RSS Feed</a>
         </li>
-        {if="$GLOBALS['config']['SHOW_ATOM']"}
-          <li class="pure-menu-item">
-            <a href="{$feedurl}?do=atom{$searchcrits}" class="pure-menu-link">ATOM Feed</a>
-          </li>
-        {/if}
         <li class="pure-menu-item">
           <a href="?do=tagcloud" class="pure-menu-link">Tag cloud</a>
         </li>
@@ -71,6 +63,12 @@
           </li>
         {/if}
       </ul>
+      <div class="pure-u-lg-1-12 pure-u-sm-0 pure-u-lg-visible">
+        <!--<i class="fa fa-user"></i>-->
+        <a href="?do=atom{$searchcrits}" class="pure-menu-link">
+          <i class="fa fa-rss"></i>
+        </a>
+      </div>
     </div>
   </div>
 </div>
