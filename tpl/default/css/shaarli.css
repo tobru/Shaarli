@@ -25,6 +25,10 @@ body {
     border-radius: .25rem;
 }
 
+pre {
+    max-width: 100%;
+}
+
 @font-face {
     font-family: 'Roboto Slab';
     font-weight: 400;
@@ -57,6 +61,16 @@ body {
 @media screen and (min-width: 80em) {
     .pure-u-xl-0 { display: none !important; }
     .pure-u-xl-visible { display: inline-block !important; }
+}
+
+/**
+ * Make pure-extras alert closable.
+ */
+.pure-alert-closable .fa-times {
+    float: right;
+}
+.pure-alert-close {
+    cursor: pointer;
 }
 
 /**
@@ -174,6 +188,10 @@ body {
     color: #d1fff0;
 }
 
+.header-buttons {
+    text-align: right;
+}
+
 #linkcount {
     /* position: fixed; */
     position: absolute;
@@ -208,6 +226,11 @@ body {
     color: #b0ddce;
 }
 
+/* because chrome */
+#search input[type="text"]::-webkit-input-placeholder {
+    color: #b0ddce;
+}
+
 #search button {
     background: transparent;
     border: none;
@@ -216,6 +239,55 @@ body {
 
 #search button:hover {
     color: #fff;
+}
+
+#header-login-form {
+    display: none;
+    height: 30px;
+    padding: 5px 0;
+    text-align: center;
+    background: #1b926c;
+    box-shadow: 0 1px 1px 1px #797979;
+}
+
+#header-login-form input[type="text"], #header-login-form input[type="password"] {
+    margin: 0 0 5px 0;
+    padding: 5px 5px 3px 15px;
+    height: 20px;
+    width: 200px;
+    background: #1fa67a;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
+    color: #b0ddce;
+}
+
+/* because chrome */
+#header-login-form input[type="text"]::-webkit-input-placeholder,
+#header-login-form input[type="password"]::-webkit-input-placeholder
+{
+    color: #b0ddce;
+}
+
+#header-login-form input[type="submit"] {
+    display: inline-block;
+    margin: 0 0 5px 0;
+    height: 25px;
+    width: 100px;
+    background: #0C7653;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 1px 1px 2px #005C3E, -1px -1px 2px #005C3E;
+    color: #b0ddce;
+}
+
+.new-version-message {
+    text-align: center;
+}
+
+.new-version-message a {
+    color: rgb(151, 96, 13);
+    font-weight: bold;
 }
 
 /**
@@ -233,6 +305,7 @@ body {
 
 /**
  * CONTENT - LINKLIST PAGING
+ * 64em -> lg
  */
 @media screen and (max-width: 64em) {
     .linklist-paging {
@@ -249,10 +322,7 @@ body {
 .linklist-filters {
     margin: 10px 0;
     color: #252525;
-}
-
-.linklist-filters span {
-    margin: 0 0 0 10px;
+    font-size: 0.9em;
 }
 
 .linklist-filters a {
@@ -289,6 +359,7 @@ body {
     margin: 10px 0;
     text-align: right;
     color: #252525;
+    font-size: 0.9em;
 }
 
 .linksperpage a {
@@ -306,12 +377,12 @@ body {
 
 .linksperpage input[type="text"] {
     width: 28px;
-    height: 20px;
-    margin: 0 0 5px 0;
+    height: 16px;
+    margin: 0;
     padding: 3px 5px 3px 8px;
     background: #c8c8c8;
     border: medium none currentColor;
-    border-radius: 25px;
+    --border-radius: 25px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
     color: #252525;
     font-size: 0.8em;
@@ -395,13 +466,17 @@ body {
     color: #20b988;
 }
 
+.linklist-item-thumbnail {
+    padding: 10px;
+    float: left;
+}
+
 .linklist-item-infos {
-    padding: 5px;
+    padding: 5px 5px 0 5px;
     background: #ddd url(../img/noise.png);
     border-top: 1px solid #989898;
     box-shadow: 1px -1px 0.2em #989898;
     color: #252525;
-    font-size: 0.8em;
 }
 
 .linklist-item-infos a {
@@ -415,6 +490,7 @@ body {
 
 .linklist-item-tags {
     margin: 0 0 5px 0;
+    font-size: 0.8em;
 }
 
 .linklist-item-infos .label-tag {
@@ -424,6 +500,10 @@ body {
 
 .linklist-item-infos .label-tag:hover {
     border: 1px solid #000;
+}
+
+.linklist-item-infos-dateblock {
+    font-size: 0.9em;
 }
 
 .linklist-plugin-icon {
@@ -436,8 +516,38 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 0.8em;
 }
 
+/** 64em -> lg **/
+@media screen and (max-width: 64em) {
+    .linklist-item-infos-url {
+        text-align: left;
+    }
+}
+
+/**
+ * Footer
+ */
+#footer {
+    margin: 20px 0;
+    padding: 5px;
+    text-align: center;
+    color: #252525;
+}
+
+#footer:before {
+    display: block;
+    content:"";
+    background: linear-gradient(to right, #949393, #252525, #949393);
+    height: 1px;
+    width: 80%;
+    margin: 10px auto;
+}
+
+#footer a {
+    color: #252525;
+}
 /**
  * CONTENT - LINKLIST ITEMS
  */

@@ -87,7 +87,6 @@ var foldButtons = document.querySelectorAll('.fold-button');
 
         // Switch fold/expand - up = fold
         if (event.target.classList.contains('fa-chevron-up')) {
-
             event.target.title = 'Expand';
             description.style.display = 'none';
         }
@@ -98,4 +97,59 @@ var foldButtons = document.querySelectorAll('.fold-button');
         event.target.classList.toggle('fa-chevron-down');
         event.target.classList.toggle('fa-chevron-up');
     });
+});
+
+/**
+ * Confirmation message before deletion.
+ */
+var deleteLinks = document.querySelectorAll('.delete-link');
+[].forEach.call(deleteLinks, function(deleteLink) {
+    deleteLink.addEventListener('click', function(event) {
+        if(!confirm('Are you sure you want to delete this link ?')) {
+            event.preventDefault();
+        }
+    });
+});
+
+/**
+ * Close alerts
+ */
+var closeLinks = document.querySelectorAll('.pure-alert-close');
+[].forEach.call(closeLinks, function(closeLink) {
+    closeLink.addEventListener('click', function(event) {
+        var alert = getParentByClass(event.target, 'pure-alert-closable');
+        alert.style.display = 'none';
+    });
+});
+
+/**
+ * New version dismiss.
+ * Hide the message for one week using localStorage.
+ */
+var newVersionDismiss = document.getElementById('new-version-dismiss');
+var newVersionMessage = document.querySelector('.new-version-message');
+if (newVersionMessage != null
+    && localStorage.getItem('newVersionDismiss') != null
+    && parseInt(localStorage.getItem('newVersionDismiss')) + 7*24*60*60*1000 > (new Date()).getTime()
+) {
+    newVersionMessage.style.display = 'none';
+}
+if (newVersionDismiss != null) {
+    newVersionDismiss.addEventListener('click', function () {
+        localStorage.setItem('newVersionDismiss', (new Date()).getTime());
+    });
+}
+
+/**
+ * Login button
+ */
+var loginButton = document.getElementById('login-button');
+loginButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    var loginBlock = document.getElementById('header-login-form');
+    loginBlock.style.display = 'block';
+    loginBlock.classList.toggle('open');
+    // Focus on login field.
+    loginBlock.firstElementChild.focus();
+    document.getElementById('content').style.boxShadow = 'none';
 });

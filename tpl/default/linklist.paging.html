@@ -1,52 +1,57 @@
 <div class="linklist-paging">
-  <div class="paging pure-g">
-    <div class="linklist-filters pure-u-1-3">
-      {if="isLoggedIn() or !empty($action_plugin)"}
-        <span class="linklist-filters-text">
-          Filters
-        </span>
-        {if="isLoggedIn()"}
-          <a href="?privateonly" title="Click to see all links"
-             class={if="$privateonly"}"filter-on"{else}"filter-off"{/if}
-          ><i class="fa fa-key"></i></a>
-        {/if}
-        {loop="$action_plugin"}
-          <!-- FIXME! Plugin update to handle that. -->
-          <a href="?privateonly" title="{$value.title}" class=
-            {if="$value.on"}
-              "filter-on"
-            {else}
-              "filter-off"
+  <div class="pure-g">
+    <div class="pure-u-2-24"></div>
+    <div class="pure-u-20-24">
+      <div class="paging pure-g">
+        <div class="linklist-filters pure-u-1-3">
+          {if="isLoggedIn() or !empty($action_plugin)"}
+            <span class="linklist-filters-text">
+              Filters
+            </span>
+            {if="isLoggedIn()"}
+              <a href="?privateonly" title="Click to see all links"
+                 class={if="$privateonly"}"filter-on"{else}"filter-off"{/if}
+              ><i class="fa fa-key"></i></a>
             {/if}
-          >{$value.url}</a>
-        {/loop}
-      {/if}
-    </div>
+            {loop="$action_plugin"}
+              <!-- FIXME! Plugin update to handle that. -->
+              <a href="?privateonly" title="{$value.title}" class=
+                {if="$value.on"}
+                  "filter-on"
+                {else}
+                  "filter-off"
+                {/if}
+              >{$value.url}</a>
+            {/loop}
+          {/if}
+        </div>
 
 
-    <div class="linklist-pages pure-u-1-3">
-      {if="$next_page_url"}
-        <a href="{$next_page_url}" class="paging_newer">
-          <i class="fa fa-arrow-circle-left"></i>
-        </a>
-      {/if}
-      {if="$page_max>1"}<span class="strong">{$page_current} / {$page_max}</span>{/if}
-      {if="$previous_page_url"}
-        <a href="{$previous_page_url}" class="paging_older">
-          <i class="fa fa-arrow-circle-right"></i>
-        </a>
-      {/if}
+        <div class="linklist-pages pure-u-1-3">
+          {if="$next_page_url"}
+            <a href="{$next_page_url}" class="paging_newer">
+              <i class="fa fa-arrow-circle-left"></i>
+            </a>
+          {/if}
+          {if="$page_max>1"}<span class="strong">{$page_current} / {$page_max}</span>{/if}
+          {if="$previous_page_url"}
+            <a href="{$previous_page_url}" class="paging_older">
+              <i class="fa fa-arrow-circle-right"></i>
+            </a>
+          {/if}
 
-    </div>
+        </div>
 
-    <div class="linksperpage pure-u-1-3">
-      Links per page
-      <a href="?linksperpage=20">20</a>
-      <a href="?linksperpage=50">50</a>
-      <a href="?linksperpage=100">100</a>
-      <form method="GET">
-        <input type="text" name="linksperpage" placeholder="133">
-      </form>
+        <div class="linksperpage pure-u-1-3">
+          <div class="pure-u-0 pure-u-lg-visible">Links per page</div>
+          <a href="?linksperpage=20">20</a>
+          <a href="?linksperpage=50">50</a>
+          <a href="?linksperpage=100">100</a>
+          <form method="GET">
+            <input type="text" name="linksperpage" placeholder="133">
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

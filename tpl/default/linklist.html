@@ -47,7 +47,9 @@
               <div class="linklist-item-editbuttons">
                 <a href="#" title="Fold" class="fold-button"><i class="fa fa-chevron-up"></i></a>
                 <a href="?edit_link={$value.linkdate}" title="Edit"><i class="fa fa-pencil-square-o"></i></a>
-                <a href="?delete_link={$value.linkdate}&amp;token={$token}" title="Delete"><i class="fa fa-trash"></i></a>
+                <a href="?delete_link={$value.linkdate}&amp;token={$token}" title="Delete" class="delete-link">
+                  <i class="fa fa-trash"></i>
+                </a>
               </div>
             {/if}
 
@@ -68,7 +70,10 @@
             </h2>
           </div>
 
-          <div class="linklist-item-thumbnail">{$value.url|thumbnail}</div>
+          {$thumb=thumbnail($value.url)}
+          {if="$thumb!=false"}
+            <div class="linklist-item-thumbnail">{$thumb}</div>
+          {/if}
 
           {if="$value.description"}
             <div class="linklist-item-description">
@@ -76,7 +81,7 @@
             </div>
           {/if}
 
-          <div class="linklist-item-infos">
+          <div class="linklist-item-infos clear">
             {if="$value.tags"}
               <div class="linklist-item-tags">
                 <i class="fa fa-tags"></i>
@@ -89,7 +94,7 @@
             {/if}
 
             <div class="pure-g">
-              <div class="pure-u-lg-5-8 pure-u-sm-1">
+              <div class="linklist-item-infos-dateblock pure-u-lg-3-8 pure-u-sm-1">
                 <a href="?{$value.shorturl}" title="Permalink">
                   {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
                     <span class="linkdate">
@@ -106,7 +111,7 @@
                   {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
                 {/loop}
               </div>
-              <div class="linklist-item-infos-url pure-u-lg-3-8 pure-u-sm-1">
+              <div class="linklist-item-infos-url pure-u-lg-5-8 pure-u-sm-1">
                 <a href="{$value.real_url}" title="{$value.title}">
                   <i class="fa fa-link"></i> {$value.url}
                 </a>
