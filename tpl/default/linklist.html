@@ -94,7 +94,7 @@
             {/if}
 
             <div class="pure-g">
-              <div class="linklist-item-infos-dateblock pure-u-lg-3-8 pure-u-sm-1">
+              <div class="linklist-item-infos-dateblock pure-u-lg-3-8 pure-u-1">
                 <a href="?{$value.shorturl}" title="Permalink">
                   {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
                     <span class="linkdate">
@@ -111,7 +111,7 @@
                   {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
                 {/loop}
               </div>
-              <div class="linklist-item-infos-url pure-u-lg-5-8 pure-u-sm-1">
+              <div class="linklist-item-infos-url pure-u-lg-5-8 pure-u-1">
                 <a href="{$value.real_url}" title="{$value.title}">
                   <i class="fa fa-link"></i> {$value.url}
                 </a>

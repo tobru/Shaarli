@@ -13,6 +13,10 @@ body {
     clear: both;
 }
 
+.center {
+    text-align: center;
+}
+
 .label {
     display: inline-block;
     padding: .25em .4em;
@@ -61,6 +65,10 @@ pre {
 @media screen and (min-width: 80em) {
     .pure-u-xl-0 { display: none !important; }
     .pure-u-xl-visible { display: inline-block !important; }
+}
+
+.pure-g [class*="pure-u"]{
+    font-family: Roboto Slab, Arial, sans-serif;
 }
 
 /**
@@ -242,15 +250,20 @@ pre {
 }
 
 #header-login-form {
-    display: none;
-    height: 30px;
-    padding: 5px 0;
+    height: 0;
     text-align: center;
     background: #1b926c;
+    transition: 0.3s;
+}
+
+#header-login-form.open {
+    display: block;
+    height: 30px;
+    padding: 5px 0;
     box-shadow: 0 1px 1px 1px #797979;
 }
 
-#header-login-form input[type="text"], #header-login-form input[type="password"] {
+#header-login-form input[type="text"], #header-login-form input[type="password"], #header-login-form .remember-me {
     margin: 0 0 5px 0;
     padding: 5px 5px 3px 15px;
     height: 20px;
@@ -269,6 +282,17 @@ pre {
     color: #b0ddce;
 }
 
+#header-login-form .remember-me {
+    display: inline-block;
+    width: auto;
+    padding: 5px 20px 3px 20px;
+    cursor: pointer;
+}
+
+#header-login-form .remember-me label, #header-login-form .remember-me input {
+    cursor: pointer;
+}
+
 #header-login-form input[type="submit"] {
     display: inline-block;
     margin: 0 0 5px 0;
@@ -279,6 +303,17 @@ pre {
     border-radius: 25px;
     box-shadow: 1px 1px 2px #005C3E, -1px -1px 2px #005C3E;
     color: #b0ddce;
+}
+
+#header-login-form input, #header-login-form .remember-me {
+    transition: visibility 1s, opacity 1s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+#header-login-form.open input, #header-login-form.open .remember-me {
+    visibility: visible;
+    opacity: 1;
 }
 
 .new-version-message {
@@ -295,29 +330,30 @@ pre {
  */
 #content {
     position: relative;
-    /* https://css-tricks.com/fighting-the-space-between-inline-block-elements/ */
-    margin-top: -4px;
     /* Hack-ish way to only shadow the top part. */
     box-shadow: 0 -20px 20px -20px #797979;
     z-index: 2;
     background: url(../img/noise.png) #979797;
 }
 
-/**
- * CONTENT - LINKLIST PAGING
- * 64em -> lg
- */
 @media screen and (max-width: 64em) {
-    .linklist-paging {
+    #content {
         margin: 2.1em 0 0 0;
     }
 }
 
 @media screen and (min-width: 64em) {
-    .linklist-paging {
-        margin: 0;
+    #content {
+        /* https://css-tricks.com/fighting-the-space-between-inline-block-elements/ */
+        margin-top: -4px;
     }
 }
+
+/**
+ * CONTENT - LINKLIST PAGING
+ * 64em -> lg
+ */
+
 
 .linklist-filters {
     margin: 10px 0;
@@ -399,6 +435,7 @@ pre {
 
 .linklist-item-title, .linklist-item-title h2  {
     margin: 0;
+    word-wrap: break-word;
 }
 
 .linklist-item-title {
@@ -451,6 +488,7 @@ pre {
 .linklist-item-description {
     padding: 10px;
     font-family: Roboto Slab, Arial, sans-serif;
+    word-wrap: break-word;
 }
 
 .linklist-item-description a {
@@ -548,7 +586,73 @@ pre {
 #footer a {
     color: #252525;
 }
+
 /**
+ * Login page
+ */
+#login-form {
+    margin: 20px 0 0 0;
+    background: url(../img/noise.png) #1fa67a;
+    border-radius: 5px;
+    box-shadow: 1px 1px 2px #797979;
+}
+
+#login-form h2 {
+    margin: 0 0 10px 0;
+    padding: 10px 0;
+    width: 100%;
+    color: #b0ddce;
+    background: #1b926c;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+    border-bottom: 1px solid #797979;
+}
+
+#login-form div {
+    width: 100%;
+    text-align: center;
+}
+
+#login-form input[type="text"], #login-form input[type="password"] {
+    margin: 10px 0;
+    padding: 5px 5px 3px 15px;
+    height: 30px;
+    width: 80%;
+    background: #1b926c;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
+    color: #b0ddce;
+}
+
+/* because chrome */
+#login-form input[type="text"]::-webkit-input-placeholder,
+#login-form input[type="password"]::-webkit-input-placeholder {
+    color: #b0ddce;
+}
+
+#login-form .remember-me {
+    margin: 5px 0;
+    color: #b0ddce;
+    font-weight: bold;
+}
+
+#login-form input[type="submit"] {
+    margin: 10px 0;
+    height: 35px;
+    width: 150px;
+    background: #1b926c;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 1px 1px 4px #0C7653, -1px -1px 6px #0C7653, -1px 1px 6px #0C7653, 1px -1px 6px #0C7653;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #b0ddce;
+}
+
+#page404 {
+    color: #3f3f3f;
+}/**
  * CONTENT - LINKLIST ITEMS
  */
 .linklist-item {

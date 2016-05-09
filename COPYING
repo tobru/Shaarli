@@ -76,6 +76,10 @@ Files: plugins/markdown/Parsedown.php
 License: MIT License (http://opensource.org/licenses/MIT)
 Copyright: (C) 2015 Emanuil Rusev - https://github.com/erusev/parsedown
 
+Files: tpl/default/img/sad_star.png
+License: MIT License (http://opensource.org/licenses/MIT)
+Copyright: (C) 2015 kalvn - https://github.com/kalvn/Shaarli-Material
+
 ----------------------------------------------------
 ZLIB/LIBPNG LICENSE
 
