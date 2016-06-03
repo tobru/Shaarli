@@ -590,14 +590,14 @@ pre {
 /**
  * Login page
  */
-#login-form {
+.page-form {
     margin: 20px 0 0 0;
     background: url(../img/noise.png) #1fa67a;
     border-radius: 5px;
     box-shadow: 1px 1px 2px #797979;
 }
 
-#login-form h2 {
+.page-form h2 {
     margin: 0 0 10px 0;
     padding: 10px 0;
     width: 100%;
@@ -608,12 +608,12 @@ pre {
     border-bottom: 1px solid #797979;
 }
 
-#login-form div {
+.page-form div {
     width: 100%;
     text-align: center;
 }
 
-#login-form input[type="text"], #login-form input[type="password"] {
+.page-form input[type="text"], .page-form input[type="password"] {
     margin: 10px 0;
     padding: 5px 5px 3px 15px;
     height: 30px;
@@ -626,8 +626,8 @@ pre {
 }
 
 /* because chrome */
-#login-form input[type="text"]::-webkit-input-placeholder,
-#login-form input[type="password"]::-webkit-input-placeholder {
+.page-form input[type="text"]::-webkit-input-placeholder,
+.page-form input[type="password"]::-webkit-input-placeholder {
     color: #b0ddce;
 }
 
@@ -637,7 +637,7 @@ pre {
     font-weight: bold;
 }
 
-#login-form input[type="submit"] {
+.page-form input[type="submit"] {
     margin: 10px 0;
     height: 35px;
     width: 150px;
