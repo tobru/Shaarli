@@ -20,22 +20,26 @@
     {/loop}
   </div>
 
-  <!-- TODO: Search results. -->
   {if="count($links)==0"}
     <div id="searchcriteria">Nothing found.</div>
-  {else}
-    {if="$search_type=='fulltext'"}
-      <div id="searchcriteria">{$result_count} results for <i>{$search_crits}</i></div>
-    {/if}
-    {if="$search_type=='tags'"}
-      <div id="searchcriteria">{$result_count} results for tags <i>
-      {loop="search_crits"}
-        <span class="linktag" title="Remove tag">
+  {elseif="!empty($search_term) or !empty($search_tags)"}
+    <div id="searchcriteria">
+      {$result_count} results
+      {if="!empty($search_term)"}
+        for <em>{$search_term}</em>
+      {/if}
+      {if="!empty($search_tags)"}
+        {$exploded_tags=explode(' ', $search_tags)}
+        tagged
+        {loop="$exploded_tags"}
+          <span class="linktag" title="Remove tag">
             <a href="?removetag={function="urlencode($value)"}">{$value} <span class="remove">x</span></a>
-        </span>
-      {/loop}</i></div>
-    {/if}
+          </span>
+        {/loop}
+      {/if}
+    </div>
   {/if}
+
   <div class="pure-g">
     <div class="pure-u-2-24"></div>
     <div class="pure-u-20-24">
@@ -96,7 +100,7 @@
             <div class="pure-g">
               <div class="linklist-item-infos-dateblock pure-u-lg-3-8 pure-u-1">
                 <a href="?{$value.shorturl}" title="Permalink">
-                  {if="!$GLOBALS['config']['HIDE_TIMESTAMPS'] || isLoggedIn()"}
+                  {if="!$hide_timestamps || isLoggedIn()"}
                     <span class="linkdate">
                       <i class="fa fa-clock-o"></i>
                       {function="strftime('%d %B %Y %H:%M', $value.timestamp)"} &middot;
