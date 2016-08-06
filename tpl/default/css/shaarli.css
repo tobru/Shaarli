@@ -81,6 +81,10 @@ pre {
     cursor: pointer;
 }
 
+.pure-alert-success {
+    background-color: #1b926c;
+}
+
 /**
  * MENU
  **/
@@ -608,9 +612,12 @@ pre {
     border-bottom: 1px solid #797979;
 }
 
-.page-form div {
-    width: 100%;
+.page-form div, .page-form p {
     text-align: center;
+}
+
+.page-form p {
+    color: #b0ddce;
 }
 
 .page-form input[type="text"], .page-form input[type="password"] {
@@ -652,7 +659,9 @@ pre {
 
 #page404 {
     color: #3f3f3f;
-}/**
+}
+
+/**
  * CONTENT - LINKLIST ITEMS
  */
 .linklist-item {
@@ -771,4 +780,11 @@ pre {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/**
+ * TOOLS
+ */
+.tools-item {
+    margin: 10px 0;
 }

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {include="includes"}
+</head>
+<body>
+{include="page.header"}
+
+<div class="pure-g">
+  <div class="pure-u-lg-1-3 pure-u-1-8"></div>
+  <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
+    <h2>Settings</h2>
+    <div class="tools-item">
+      <a href="?do=configure" title="Change Shaarli settings: title, timezone, etc.">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Configure your Shaarli</span>
+      </a>
+    </div>
+    <div class="tools-item">
+      <a href="?do=pluginadmin" title="Enable, disable and configure plugins">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Plugin administration</span>
+      </a>
+    </div>
+    {if="!$openshaarli"}
+      <div class="tools-item">
+        <a href="?do=changepasswd" title="Change your password">
+          <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Change password</span>
+        </a>
+      </div>
+    {/if}
+    <div class="tools-item">
+      <a href="?do=changetag" title="Rename or delete a tag in all links">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Manage tags</span>
+      </a>
+    </div>
+    <div class="tools-item">
+      <a href="?do=import" title="Import Netscape HTML bookmarks (as exported from Firefox, Chrome, Opera, delicious...)">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Import links</span>
+      </a>
+    </div>
+    <div class="tools-item">
+      <a href="?do=export" title="<!--Export Netscape HTML bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)-->">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Export database</span>
+      </a>
+    </div>
+
+
+  </div>
+  {loop="$tools_plugin"}
+    {$value}
+  {/loop}
+
+  <div class="clear"></div>
+
+  <div class="pure-u-lg-1-3 pure-u-1-8"></div>
+</div>
+
+<div class="pure-g">
+  <div class="pure-u-lg-1-3 pure-u-1-8"></div>
+  <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
+    <h2>Bookmarklets</h2>
+    <p>
+      Drag one of these button to your bookmarks toolbar or right-click it and "Bookmark This Link",
+      then click on the bookmarklet in any page you want to share.
+    </p>
+    <div class="tools-item">
+      <a title="Drag this link to your bookmarks toolbar or right-click it and Bookmark This Link,
+                then click ✚Shaare link button in any page you want to share"
+         onclick="return alertBookmarklet();"
+         href="javascript:(
+          function(){
+            var%20url%20=%20location.href;
+            var%20title%20=%20document.title%20||%20url;
+            window.open(
+              '{$pageabsaddr}?post='%20+%20encodeURIComponent(url)+
+              '&amp;title='%20+%20encodeURIComponent(title)+
+              '&amp;description='%20+%20encodeURIComponent(document.getSelection())+
+              '&amp;source=bookmarklet','_blank','menubar=no,height=390,width=600,toolbar=no,scrollbars=no,status=no,dialog=1'
+            );
+          }
+        )();">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ Shaare link</span>
+      </a>
+    </div>
+    <div class="tools-item">
+      <a title="Drag this link to your bookmarks toolbar or right-click it and Bookmark This Link,
+                Then click ✚Add Note button anytime to start composing a private Note (text post) to your Shaarli"
+         onclick="return alertBookmarklet();"
+         href="?private=1&amp;post=">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ Add Note</span>
+      </a>
+    </div>
+  </div>
+  <div class="pure-u-lg-1-3 pure-u-1-8"></div>
+</div>
+
+<div class="pure-g">
+  <div class="pure-u-lg-1-3 pure-u-1-8"></div>
+  <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
+    <h2>Firefox Social API</h2>
+    <p>You need to browse your Shaarli over <strong>HTTPS</strong> to use this functionality.</p>
+
+    <div class="tools-item">
+      <a title="Click on this button to add Shaarli to the 'Share this page' button in Firefox"
+         onclick="activateFirefoxSocial(this)">
+      <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ Add to Firefox social</span>
+      </a>
+    </div>
+  </div>
+  <div class="pure-u-lg-1-3 pure-u-1-8"></div>
+</div>
+
+<div class="pure-g">
+  <div class="pure-u-lg-1-3 pure-u-1-8"></div>
+  <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
+    <h2>3rd party</h2>
+    <div class="tools-item">
+      <a href="https://addons.mozilla.org/fr/firefox/addon/shaarli/" title="Firefox Plugin">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Firefox plugin</span>
+      </a>
+    </div>
+    <div class="tools-item">
+      <a href="https://chrome.google.com/webstore/detail/shiny-shaarli/hajdfkmbdmadjmmpkkbbcnllepomekin"
+         title="Chrome Plugin">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Chrome plugin</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+{include="page.footer"}
+<script>
+  function activateFirefoxSocial(node) {
+    var loc = location.href;
+    var baseURL = loc.substring(0, loc.lastIndexOf("/"));
+
+    // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
+    var data = {
+      name: "{$shaarlititle}",
+      description: "The personal, minimalist, super-fast, no-database delicious clone.",
+      author: "Shaarli",
+      version: "1.0.0",
+
+      iconURL: baseURL + "/images/favicon.ico",
+      icon32URL: baseURL + "/images/favicon.ico",
+      icon64URL: baseURL + "/images/favicon.ico",
+
+      shareURL: baseURL + "{noparse}?post=%{url}&title=%{title}&description=%{text}&source=firefoxsocialapi{/noparse}",
+      homepageURL: baseURL
+    };
+    node.setAttribute("data-service", JSON.stringify(data));
+
+    var activate = new CustomEvent("ActivateSocialFeature");
+    node.dispatchEvent(activate);
+  }
+
+  function alertBookmarklet() {
+    alert('Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link...');
+    return false;
+  }
+</script>
+</body>
+</html>
+
