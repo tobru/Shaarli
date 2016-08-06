@@ -112,7 +112,7 @@ pre {
 }
 
 .pure-menu-selected {
-    background: #1A694C;
+    background: #b0ddce;
 }
 
 .pure-menu-link,
@@ -535,12 +535,12 @@ pre {
     color: #000;
 }
 
-.linklist-item-tags {
+.linklist-item-infos .linklist-item-tags {
     margin: 0 0 5px 0;
     font-size: 0.8em;
 }
 
-.linklist-item-infos .label-tag {
+.linklist-item-infos .linklist-item-infos .label-tag {
     border: 1px solid #505050;
     font-size: 0.9em;
 }
@@ -766,12 +766,12 @@ pre {
     margin: 0 0 5px 0;
 }
 
-.linklist-item-infos .label-tag {
+.label-tag {
     border: 1px solid #505050;
     font-size: 0.9em;
 }
 
-.linklist-item-infos .label-tag:hover {
+.label-tag:hover {
     border: 1px solid #000;
 }
 
@@ -785,6 +785,24 @@ pre {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/**
+ * Search results
+ */
+.search-result a {
+    color: white;
+    text-decoration: none;
+}
+
+.search-result .label-tag {
+    border-color: white;
+}
+
+.search-result .label-tag .remove {
+    border-left: white 1px solid;
+    padding: 0 0 0 5px;
+    margin: 0 0 0 5px;
 }
 
 /**
