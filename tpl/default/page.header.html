@@ -113,7 +113,7 @@
     </form>
     <form method="GET" class="tagfilter" name="tagfilter">
       <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="Filter by tag"
-        {if="!empty($search_tags}"}
+        {if="!empty($search_tags)"}
           value="{$search_tags}"
         {/if}
         autocomplete="off" data-multiple data-minChars="1"
