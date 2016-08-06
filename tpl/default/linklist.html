@@ -114,8 +114,9 @@
                   <span>{$value}</span>
                   {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
                 {/loop}
-              </div>
-              <div class="linklist-item-infos-url pure-u-lg-5-8 pure-u-1">
+              </div><div
+                {ignore}do not add space or line break between these div - Firefox issue{/ignore}
+                class="linklist-item-infos-url pure-u-lg-5-8 pure-u-1">
                 <a href="{$value.real_url}" title="{$value.title}">
                   <i class="fa fa-link"></i> {$value.url}
                 </a>
