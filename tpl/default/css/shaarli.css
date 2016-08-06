@@ -101,6 +101,11 @@ pre {
     z-index: 999;
 }
 
+/* Chrome bugfix: with 100% height, it only displays the first element. */
+.pure-menu-item {
+    height: inherit;
+}
+
 .shaarli-menu.open {
     max-height: 500px;
     transition: max-height 0.75s;
