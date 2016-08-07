@@ -605,6 +605,7 @@ pre {
     background: url(../img/noise.png) #1fa67a;
     border-radius: 5px;
     box-shadow: 1px 1px 2px #797979;
+    color: #b0ddce;
 }
 
 .page-form h2 {
@@ -618,7 +619,9 @@ pre {
     border-bottom: 1px solid #797979;
 }
 
-.page-form input[type="text"], .page-form input[type="password"] {
+.page-form input[type="text"],
+.page-form input[type="password"],
+.page-form textarea {
     margin: 10px 0;
     padding: 5px 5px 3px 15px;
     height: 30px;
@@ -628,6 +631,13 @@ pre {
     border-radius: 25px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
     color: #b0ddce;
+}
+
+.page-form textarea {
+    height: 240px;
+    resize: vertical;
+    overflow-y: auto;
+    word-wrap:break-word
 }
 
 /* because chrome */
@@ -657,10 +667,6 @@ pre {
  */
 .page-form-light div, .page-form-light p {
     text-align: center;
-}
-
-.page-form-light p {
-    color: #b0ddce;
 }
 
 /**
@@ -790,7 +796,6 @@ pre {
 .linklist-item-title a:hover, .linklist-item-title .linklist-link:hover{
     color: #fff;
 }
-
 
 .linklist-item-title .label-private {
     border: solid 1px #d0fff0;
