@@ -11,35 +11,37 @@
   <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
     <h2>Settings</h2>
     <div class="tools-item">
-      <a href="?do=configure" title="Change Shaarli settings: title, timezone, etc.">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Configure your Shaarli</span>
+      <a href="?do=configure" title="{'Change Shaarli settings: title, timezone, etc.'|t}">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">{'Configure your Shaarli'|t}</span>
       </a>
     </div>
     <div class="tools-item">
-      <a href="?do=pluginadmin" title="Enable, disable and configure plugins">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Plugin administration</span>
+      <a href="?do=pluginadmin" title="{'Enable, disable and configure plugins'|t}">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">{'Plugin administration'|t}</span>
       </a>
     </div>
     {if="!$openshaarli"}
       <div class="tools-item">
-        <a href="?do=changepasswd" title="Change your password">
-          <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Change password</span>
+        <a href="?do=changepasswd" title="{'Change your password'|t}">
+          <span class="pure-button pure-u-lg-2-3 pure-u-3-4">{'Change password'|t}</span>
         </a>
       </div>
     {/if}
     <div class="tools-item">
-      <a href="?do=changetag" title="Rename or delete a tag in all links">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Manage tags</span>
+      <a href="?do=changetag" title="{'Rename or delete a tag in all links'|t}">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">{'Manage tags'|t}</span>
       </a>
     </div>
     <div class="tools-item">
-      <a href="?do=import" title="Import Netscape HTML bookmarks (as exported from Firefox, Chrome, Opera, delicious...)">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Import links</span>
+      <a href="?do=import"
+         title="{'Import Netscape HTML bookmarks (as exported from Firefox, Chrome, Opera, delicious...)'|t}">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">{'Import links'|t}</span>
       </a>
     </div>
     <div class="tools-item">
-      <a href="?do=export" title="<!--Export Netscape HTML bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)-->">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Export database</span>
+      <a href="?do=export"
+         title="{'Export Netscape HTML bookmarks (which can be imported in Firefox, Chrome, Opera, delicious...)'|t}">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">{'Export database'|t}</span>
       </a>
     </div>
 
@@ -59,12 +61,12 @@
   <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
     <h2>Bookmarklets</h2>
     <p>
-      Drag one of these button to your bookmarks toolbar or right-click it and "Bookmark This Link",
-      then click on the bookmarklet in any page you want to share.
+      {'Drag one of these button to your bookmarks toolbar or right-click it and "Bookmark This Link"'|t},
+      {'then click on the bookmarklet in any page you want to share.'|t}
     </p>
     <div class="tools-item">
-      <a title="Drag this link to your bookmarks toolbar or right-click it and Bookmark This Link,
-                then click ✚Shaare link button in any page you want to share"
+      <a title="{'Drag this link to your bookmarks toolbar or right-click it and Bookmark This Link'|t},
+                {'then click ✚Shaare link button in any page you want to share'|t}"
          onclick="return alertBookmarklet();"
          href="javascript:(
           function(){
@@ -78,15 +80,15 @@
             );
           }
         )();">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ Shaare link</span>
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ {'Shaare link'|t}</span>
       </a>
     </div>
     <div class="tools-item">
-      <a title="Drag this link to your bookmarks toolbar or right-click it and Bookmark This Link,
-                Then click ✚Add Note button anytime to start composing a private Note (text post) to your Shaarli"
+      <a title="{'Drag this link to your bookmarks toolbar or right-click it and Bookmark This Link'|t},
+                {'Then click ✚Add Note button anytime to start composing a private Note (text post) to your Shaarli'|t}"
          onclick="return alertBookmarklet();"
          href="?private=1&amp;post=">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ Add Note</span>
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ {'Add Note'|t}</span>
       </a>
     </div>
   </div>
@@ -97,12 +99,12 @@
   <div class="pure-u-lg-1-3 pure-u-1-8"></div>
   <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
     <h2>Firefox Social API</h2>
-    <p>You need to browse your Shaarli over <strong>HTTPS</strong> to use this functionality.</p>
+    <p>{'You need to browse your Shaarli over <strong>HTTPS</strong> to use this functionality.'|t}</p>
 
     <div class="tools-item">
-      <a title="Click on this button to add Shaarli to the 'Share this page' button in Firefox"
+      <a title="{'Click on this button to add Shaarli to the 'Share this page' button in Firefox"
          onclick="activateFirefoxSocial(this)">
-      <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ Add to Firefox social</span>
+      <span class="pure-button pure-u-lg-2-3 pure-u-3-4">✚ {'Add to'|t} Firefox Social</span>
       </a>
     </div>
   </div>
@@ -112,16 +114,16 @@
 <div class="pure-g">
   <div class="pure-u-lg-1-3 pure-u-1-8"></div>
   <div class="pure-u-lg-1-3 pure-u-3-4 page-form">
-    <h2>3rd party</h2>
+    <h2>{'3rd party'|t}</h2>
     <div class="tools-item">
-      <a href="https://addons.mozilla.org/fr/firefox/addon/shaarli/" title="Firefox Plugin">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Firefox plugin</span>
+      <a href="https://addons.mozilla.org/fr/firefox/addon/shaarli/" title="Firefox {'Plugin'|t}">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Firefox {'plugin'|t}</span>
       </a>
     </div>
     <div class="tools-item">
       <a href="https://chrome.google.com/webstore/detail/shiny-shaarli/hajdfkmbdmadjmmpkkbbcnllepomekin"
-         title="Chrome Plugin">
-        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Chrome plugin</span>
+         title="Chrome {'Plugin'|t}">
+        <span class="pure-button pure-u-lg-2-3 pure-u-3-4">Chrome {'plugin'|t}</span>
       </a>
     </div>
   </div>
@@ -136,7 +138,7 @@
     // Keeping the data separated (ie. not in the DOM) so that it's maintainable and diffable.
     var data = {
       name: "{$shaarlititle}",
-      description: "The personal, minimalist, super-fast, no-database delicious clone.",
+      description: "The personal, minimalist, super-fast, database free, bookmarking service by the Shaarli community.",
       author: "Shaarli",
       version: "1.0.0",
 
@@ -154,7 +156,7 @@
   }
 
   function alertBookmarklet() {
-    alert('Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link...');
+    alert({"'Drag this link to your bookmarks toolbar, or right-click it and choose Bookmark This Link'"|t});
     return false;
   }
 </script>

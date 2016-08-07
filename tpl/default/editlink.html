@@ -10,28 +10,28 @@
   <div id="editlinkform" class="pure-g">
     <div class="pure-u-lg-1-5 pure-u-1-8"></div>
     <form method="post" name="linkform" class="page-form pure-u-lg-3-5 pure-u-3-4" >
-      <h2>Shaare</h2>
+      <h2>{'Shaare'|t}</h2>
       <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
       <div>
-        <label for="lf_url">URL</label>
+        <label for="lf_url">{'URL'|t}</label>
       </div>
       <div>
         <input type="text" name="lf_url" id="lf_url" value="{$link.url}" class="lf_input">
       </div>
       <div>
-      <label for="lf_title">Title</label>
+      <label for="lf_title">{'Title'|t}</label>
       </div>
       <div>
         <input type="text" name="lf_title" id="lf_title" value="{$link.title}" class="lf_input">
       </div>
       <div>
-        <label for="lf_description">Description</label>
+        <label for="lf_description">{'Description'|t}</label>
       </div>
       <div>
         <textarea name="lf_description" id="lf_description">{$link.description}</textarea>
       </div>
       <div>
-        <label for="lf_tags">Tags</label>
+        <label for="lf_tags">{'Tags'|t}</label>
       </div>
       <div>
         <input type="text" name="lf_tags" id="lf_tags" value="{$link.tags}" class="lf_input"
@@ -43,7 +43,7 @@
         {if="($link_is_new && $default_private_links) || $link.private == true"}
           checked="checked"
         {/if}>
-        &nbsp;<label for="lf_private">Private</label>
+        &nbsp;<label for="lf_private">{'Private'|t}</label>
       </div>
 
       <div id="editlink-plugins">
@@ -53,9 +53,9 @@
       </div>
 
       <div>
-        <input type="submit" value="Save" name="save_edit">
+        <input type="submit" value="{'Save'|t}" name="save_edit">
         {if="!$link_is_new"}
-          <input type="submit" value="Delete" name="delete_link" class="delete-link">
+          <input type="submit" value="{'Delete'|t}" name="delete_link" class="delete-link">
         {/if}
       </div>
 

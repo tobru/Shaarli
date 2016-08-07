@@ -24,22 +24,22 @@
     <div class="pure-g pure-alert pure-alert-error search-result">
       <div class="pure-u-2-24"></div>
       <div class="pure-u-20-24">
-        <div id="searchcriteria">Nothing found.</div>
+        <div id="searchcriteria">{'Nothing found.'|t}</div>
       </div>
     </div>
   {elseif="!empty($search_term) or !empty($search_tags)"}
     <div class="pure-g pure-alert pure-alert-success search-result">
       <div class="pure-u-2-24"></div>
       <div class="pure-u-20-24">
-        {$result_count} results
+        {function="t('%s result', '%s results', $result_count)"}
         {if="!empty($search_term)"}
-          for <em><strong>{$search_term}</strong></em>
+          {'for'|t} <em><strong>{$search_term}</strong></em>
         {/if}
         {if="!empty($search_tags)"}
           {$exploded_tags=explode(' ', $search_tags)}
-          tagged
+          {'tagged'|t}
           {loop="$exploded_tags"}
-              <span class="label label-tag" title="Remove tag">
+              <span class="label label-tag" title="{'Remove tag'|t}">
                 <a href="?removetag={function="urlencode($value)"}">{$value}<span class="remove"><i class="fa fa-times"></i></span></a>
               </span>
           {/loop}
@@ -57,9 +57,10 @@
           <div class="linklist-item-title">
             {if="isLoggedIn()"}
               <div class="linklist-item-editbuttons">
-                <a href="#" title="Fold" class="fold-button"><i class="fa fa-chevron-up"></i></a>
-                <a href="?edit_link={$value.linkdate}" title="Edit"><i class="fa fa-pencil-square-o"></i></a>
-                <a href="?delete_link={$value.linkdate}&amp;token={$token}" title="Delete" class="delete-link">
+                <!-- FIXME! JS translation -->
+                <a href="#" title="{'Fold'|t}" class="fold-button"><i class="fa fa-chevron-up"></i></a>
+                <a href="?edit_link={$value.linkdate}" title="{'Edit'|t}"><i class="fa fa-pencil-square-o"></i></a>
+                <a href="?delete_link={$value.linkdate}&amp;token={$token}" title="{'Delete'|t}" class="delete-link">
                   <i class="fa fa-trash"></i>
                 </a>
               </div>
@@ -74,7 +75,7 @@
                 {/if}
 
                 {if="$value.private"}
-                  <span class="label label-private">Private</span>
+                  <span class="label label-private">{'Private'|t}</span>
                 {/if}
 
                 {$value.title}
@@ -107,14 +108,14 @@
 
             <div class="pure-g">
               <div class="linklist-item-infos-dateblock pure-u-lg-3-8 pure-u-1">
-                <a href="?{$value.shorturl}" title="Permalink">
+                <a href="?{$value.shorturl}" title="{'Permalink'|t}">
                   {if="!$hide_timestamps || isLoggedIn()"}
                     <span class="linkdate">
                       <i class="fa fa-clock-o"></i>
                       {function="strftime('%d %B %Y %H:%M', $value.timestamp)"} &middot;
                     </span>
                   {/if}
-                  permalink &middot;
+                  {'permalink'|t} &middot;
                 </a>
 
                 {$link_plugin_counter=count($value.link_plugin)}

@@ -6,10 +6,10 @@
         <div class="linklist-filters pure-u-1-3">
           {if="isLoggedIn() or !empty($action_plugin)"}
             <span class="linklist-filters-text">
-              Filters
+              {'Filters'|t}
             </span>
             {if="isLoggedIn()"}
-              <a href="?privateonly" title="Click to see all links"
+              <a href="?privateonly" title="{'Filter private links'|t}"
                  class={if="$privateonly"}"filter-on"{else}"filter-off"{/if}
               ><i class="fa fa-key"></i></a>
             {/if}
@@ -43,7 +43,7 @@
         </div>
 
         <div class="linksperpage pure-u-1-3">
-          <div class="pure-u-0 pure-u-lg-visible">Links per page</div>
+          <div class="pure-u-0 pure-u-lg-visible">{'Links per page'|t}</div>
           <a href="?linksperpage=20">20</a>
           <a href="?linksperpage=50">50</a>
           <a href="?linksperpage=100">100</a>

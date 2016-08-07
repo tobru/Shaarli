@@ -16,33 +16,25 @@
             <i class="fa fa-home"></i>
           </a>
         </li>
-        {if="isLoggedIn()"}
+        {if="isLoggedIn() || $openshaarli"}
           <li class="pure-menu-item">
-            <a href="?do=addlink" class="pure-menu-link">Shaare</a>
+            <a href="?do=addlink" class="pure-menu-link">{'Shaare'|t}</a>
           </li>
           <li class="pure-menu-item">
-            <a href="?do=tools" class="pure-menu-link">Tools</a>
-          </li>
-
-        {elseif="$openshaarli"}
-          <li class="pure-menu-item">
-            <a href="?do=addlink" class="pure-menu-link">Shaare</a>
-          </li>
-          <li class="pure-menu-item">
-            <a href="?do=tools" class="pure-menu-link">Tools</a>
+            <a href="?do=tools" class="pure-menu-link">{'Tools'|t}</a>
           </li>
         {/if}
         <li class="pure-menu-item pure-u-lg-0">
-          <a href="?do=atom{$searchcrits}" class="pure-menu-link">RSS Feed</a>
+          <a href="?do=atom{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
         </li>
         <li class="pure-menu-item">
-          <a href="?do=tagcloud" class="pure-menu-link">Tag cloud</a>
+          <a href="?do=tagcloud" class="pure-menu-link">{'Tag cloud'|t}</a>
         </li>
         <li class="pure-menu-item">
-          <a href="?do=picwall{$searchcrits}" class="pure-menu-link">Picture wall</a>
+          <a href="?do=picwall{$searchcrits}" class="pure-menu-link">{'Picture wall'|t}</a>
         </li>
         <li class="pure-menu-item">
-          <a href="?do=daily" class="pure-menu-link">Daily</a>
+          <a href="?do=daily" class="pure-menu-link">{'Daily'|t}</a>
         </li>
         <!-- FIXME! update plugin system to handle this -->
         {loop="$plugins_header.buttons_toolbar"}
@@ -52,11 +44,11 @@
         {/loop}
         {if="isLoggedIn()"}
           <li class="pure-menu-item">
-            <a href="?do=logout" class="pure-menu-link">Logout</a>
+            <a href="?do=logout" class="pure-menu-link">{'Logout'|t}</a>
           </li>
         {else}
           <li class="pure-menu-item">
-            <a href="?do=login" class="pure-menu-link">Login</a>
+            <a href="?do=login" class="pure-menu-link">{'Login'|t}</a>
           </li>
         {/if}
       </ul>
@@ -64,19 +56,19 @@
         <ul class="pure-menu-list">
           {if="!isLoggedIn()"}
             <li class="pure-menu-item">
-              <a href="?do=login" class="pure-menu-link" id="login-button" title="Login">
+              <a href="?do=login" class="pure-menu-link" id="login-button" title="{'Login'|t}">
                 <i class="fa fa-user"></i>
               </a>
             </li>
           {else}
             <li class="pure-menu-item">
-              <a href="?do=logout" class="pure-menu-link" title="Logout">
+              <a href="?do=logout" class="pure-menu-link" title="{'Logout'|t}">
                 <i class="fa fa-sign-out"></i>
               </a>
             </li>
           {/if}
           <li class="pure-menu-item">
-            <a href="?do=atom{$searchcrits}" class="pure-menu-link" title="ATOM Feed">
+            <a href="?do=atom{$searchcrits}" class="pure-menu-link" title="{'RSS Feed'|t}">
               <i class="fa fa-rss"></i>
             </a>
           </li>
@@ -94,16 +86,16 @@
   </h1>
   <div id="linkcount">
     {if="!empty($linkcount)"}
-      <span class="strong">{$linkcount}</span> shaares
+      <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
       {if="$privateLinkcount>0"}
-        - <span class="strong">{$privateLinkcount}</span> private links
+        - <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
       {/if}
     {/if}
   </div>
 
   <div id="search">
     <form method="GET" class="searchform" name="searchform">
-      <input type="text" tabindex="1" id="searchform_value" name="searchterm" placeholder="Search text"
+      <input type="text" tabindex="1" id="searchform_value" name="searchterm" placeholder="{'Search text'|t}"
         {if="!empty($search_term)"}
              value="{$search_term}"
         {/if}
@@ -112,7 +104,7 @@
       <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
     </form>
     <form method="GET" class="tagfilter" name="tagfilter">
-      <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="Filter by tag"
+      <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="{'Filter by tag'|t}"
         {if="!empty($search_tags)"}
           value="{$search_tags}"
         {/if}
@@ -128,11 +120,11 @@
 <div id="content">
   <form method="post" name="loginform">
     <div id="header-login-form">
-      <input type="text" name="login" placeholder="Username" tabindex="3">
-      <input type="password" name="password" placeholder="Password" tabindex="5">
+      <input type="text" name="login" placeholder="{'Username'|t}" tabindex="3">
+      <input type="password" name="password" placeholder="{'Password'|t}" tabindex="5">
       <div class="remember-me">
         <input type="checkbox" name="longlastingsession" id="longlastingsession" tabindex="6">
-        <label for="longlastingsession">Remember me</label>
+        <label for="longlastingsession">{'Remember me'|t}</label>
       </div>
       <input type="hidden" name="token" value="{$token}">
       <input type="hidden" name="returnurl">
@@ -145,13 +137,13 @@
     <div class="pure-u-2-24"></div>
     {if="$newVersion"}
       <div class="pure-u-20-24">
-        Shaarli {$newVersion} is
-        <a href="https://github.com/shaarli/Shaarli/releases">available</a>.
+        Shaarli {$newVersion}
+        <a href="https://github.com/shaarli/Shaarli/releases">{'is available'|t}</a>.
       </div>
     {/if}
     {if="$versionError"}
       <div class="pure-u-20-24">
-        Error: {$versionError}
+        {'Error'|t}: {$versionError}
       </div>
     {/if}
     <div class="pure-u-2-24">
@@ -159,14 +151,6 @@
     </div>
   </div>
 {/if}
-
-
-{if="!empty($_GET['source']) && $_GET['source']=='bookmarklet'"}
-    {ignore} When called as a popup from bookmarklet, do not display menu. {/ignore}
-{else}
-
-{/if}
-
 
 {if="!empty($plugin_errors) && isLoggedIn()"}
     <ul class="errors">
