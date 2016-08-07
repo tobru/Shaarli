@@ -15,6 +15,7 @@ body {
 
 .center {
     text-align: center;
+    margin: auto;
 }
 
 .label {
@@ -597,7 +598,7 @@ pre {
 }
 
 /**
- * Login page
+ * PAGE FORM
  */
 .page-form {
     margin: 20px 0 0 0;
@@ -615,14 +616,6 @@ pre {
     text-align: center;
     border-radius: 5px 5px 0 0;
     border-bottom: 1px solid #797979;
-}
-
-.page-form div, .page-form p {
-    text-align: center;
-}
-
-.page-form p {
-    color: #b0ddce;
 }
 
 .page-form input[type="text"], .page-form input[type="password"] {
@@ -643,12 +636,6 @@ pre {
     color: #b0ddce;
 }
 
-#login-form .remember-me {
-    margin: 5px 0;
-    color: #b0ddce;
-    font-weight: bold;
-}
-
 .page-form input[type="submit"] {
     margin: 10px 0;
     height: 35px;
@@ -662,8 +649,106 @@ pre {
     color: #b0ddce;
 }
 
+.page-form select {
+    color: black;
+}
+/**
+ * PAGE FORM - LIGHT
+ */
+.page-form-light div, .page-form-light p {
+    text-align: center;
+}
+
+.page-form-light p {
+    color: #b0ddce;
+}
+
+/**
+ * PAGE FORM - COMPLETE
+ */
+.page-form-complete {
+    #background: #ddd;
+}
+
+.page-form-complete div, .page-form-complete p {
+    color: #b0ddce;
+}
+
+.page-form-complete .form-label, .page-form-complete .form-input {
+    position: relative;
+    height: 60px;
+}
+
+.page-form-complete .form-label label,
+.page-form-complete .form-input input,
+.page-form-complete .timezone {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.page-form-complete .form-label label {
+    text-align: right;
+    right: 0;
+    padding: 0 20px;
+}
+
+.page-form-complete .label-name {
+    font-weight: bold;
+}
+
+.page-form-complete .label-desc {
+    font-size: 0.7em;
+}
+
+@media screen and (max-width: 64em) {
+    .page-form-complete .form-label {
+        height: inherit;
+    }
+
+    .page-form-complete .form-label label,
+    .page-form-complete .form-input input,
+    .page-form-complete .timezone {
+        position: inherit;
+        top: inherit;
+        transform: translateY(0);
+    }
+
+    .page-form-complete .form-input input[type="checkbox"] {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translateY(-50%);
+    }
+
+    .page-form-complete .form-input {
+        text-align: center;
+    }
+
+    .page-form-complete .form-label label {
+        display: block;
+        text-align: left;
+        margin: 10px 0 0 0;
+    }
+    
+    .timezone-continent:after {
+        content:"\a\a";
+        white-space: pre;
+    }
+}
+
+
 #page404 {
     color: #3f3f3f;
+}
+
+/**
+ * LOGIN
+ */
+#login-form .remember-me {
+    margin: 5px 0;
+    color: #b0ddce;
+    font-weight: bold;
 }
 
 /**
