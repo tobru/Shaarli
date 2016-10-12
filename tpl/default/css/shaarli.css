@@ -619,6 +619,11 @@ pre {
     border-bottom: 1px solid #797979;
 }
 
+.page-form a {
+    color: #b0ddce;
+    font-weight: bold;
+}
+
 .page-form input[type="text"],
 .page-form input[type="password"],
 .page-form textarea {
@@ -705,6 +710,18 @@ pre {
 
 .page-form-complete .label-desc {
     font-size: 0.7em;
+}
+
+.page-form .awesomplete {
+    width: 80%;
+}
+
+.page-form .awesomplete input {
+    width: 100%;
+}
+
+.page-form div.awesomplete > ul {
+    color: black;
 }
 
 @media screen and (max-width: 64em) {
