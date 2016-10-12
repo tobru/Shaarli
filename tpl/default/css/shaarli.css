@@ -619,6 +619,10 @@ pre {
     border-bottom: 1px solid #797979;
 }
 
+.page-form h3 {
+    text-align: center;
+}
+
 .page-form a {
     color: #b0ddce;
     font-weight: bold;
@@ -640,6 +644,7 @@ pre {
 
 .page-form textarea {
     height: 240px;
+    padding: 15px 5px 3px 15px;
     resize: vertical;
     overflow-y: auto;
     word-wrap:break-word
@@ -652,7 +657,7 @@ pre {
 }
 
 .page-form input[type="submit"] {
-    margin: 10px 0;
+    margin: 15px 5px;
     height: 35px;
     width: 150px;
     background: #1b926c;
@@ -712,6 +717,32 @@ pre {
     font-size: 0.7em;
 }
 
+.page-form section {
+    margin-top: 20px;
+}
+
+
+.page-form table {
+    margin: auto;
+    width: 90%;
+}
+
+.page-form table .order {
+    text-decoration: none;
+}
+
+.page-form table, .page-form th, .page-form td {
+    border-width: 1px 0;
+    border-style: solid;
+    border-color: #b0ddce;
+}
+
+.page-form th, .page-form td {
+    padding: 5px;
+
+}
+
+/* Awesomeplete fix */
 .page-form .awesomplete {
     width: 80%;
 }
@@ -875,7 +906,7 @@ pre {
 
 .label-tag {
     border: 1px solid #505050;
-    font-size: 0.9em;
+    font-size: 1em;
 }
 
 .label-tag:hover {

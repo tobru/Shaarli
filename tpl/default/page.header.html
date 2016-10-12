@@ -153,11 +153,17 @@
 {/if}
 
 {if="!empty($plugin_errors) && isLoggedIn()"}
-    <ul class="errors">
+  <div class="pure-g new-version-message pure-alert pure-alert-error pure-alert-closable">
+    <div class="pure-u-2-24"></div>
+    <div class="pure-u-20-24">
         {loop="plugin_errors"}
-            <li>{$value}</li>
+            <p>{$value}</p>
         {/loop}
-    </ul>
+    </div>
+    <div class="pure-u-2-24">
+      <i class="fa fa-times pure-alert-close"></i>
+    </div>
+  </div>
 {/if}
 
 <div class="clear"></div>
