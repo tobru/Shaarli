@@ -115,14 +115,17 @@
                       {function="strftime('%d %B %Y %H:%M', $value.timestamp)"} &middot;
                     </span>
                   {/if}
-                  {'permalink'|t} &middot;
+                  {'permalink'|t}
                 </a>
 
-                {$link_plugin_counter=count($value.link_plugin)}
-                {loop="$value.link_plugin"}
-                  <span>{$value}</span>
-                  {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
-                {/loop}
+                {if="isset($value.link_plugin)"}
+                  &middot;
+                  {$link_plugin_counter=count($value.link_plugin)}
+                  {loop="$value.link_plugin"}
+                    <span>{$value}</span>
+                    {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
+                  {/loop}
+                {/if}
               </div><div
                 {ignore}do not add space or line break between these div - Firefox issue{/ignore}
                 class="linklist-item-infos-url pure-u-lg-5-8 pure-u-1">
