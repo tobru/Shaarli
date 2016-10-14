@@ -949,3 +949,20 @@ pre {
 .tools-item {
     margin: 10px 0;
 }
+
+/**
+ * PLUGIN ADMIN
+ */
+#pluginform .mobile-row {
+    font-size: 0.9em;
+}
+
+@media screen and (max-width: 64em) {
+    #pluginform .main-row, #pluginform .main-row td {
+        border-bottom-style: none;
+    }
+
+    #pluginform .mobile-row, #pluginform .mobile-row td {
+        border-top-style: none;
+    }
+}

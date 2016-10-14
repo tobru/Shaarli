@@ -31,35 +31,48 @@
           {else}
           <table id="plugin_table">
             <thead>
-            <tr>
-              <th class="center">{'Disable'|t}</th>
-              <th class="center">{'Order'|t}</th>
-              <th>{'Name'|t}</th>
-              <th>{'Description'|t}</th>
-            </tr>
+              <tr>
+                <th class="center">{'Disable'|t}</th>
+                <th>{'Name'|t}</th>
+                <th><div class="pure-u-0 pure-u-lg-visible">{'Description'|t}</div></th>
+                <th class="center">{'Order'|t}</th>
+              </tr>
             </thead>
             <tbody>
-            {loop="$enabledPlugins"}
-            <tr data-line="{$key}" data-order="{$counter}">
-              <td class="center"><input type="checkbox" name="{$key}" id="{$key}" checked="checked"></td>
-              <td class="center">
-                {if="count($enabledPlugins)>1"}
-                  <a href="#" class="order"
-                     onclick="return orderUp(this.parentNode.parentNode.getAttribute('data-order'));">
-                    ▲
-                  </a>
-                  <a href="#" class="order"
-                     onclick="return orderDown(this.parentNode.parentNode.getAttribute('data-order'));">
-                    ▼
-                  </a>
-                {/if}
-                <input type="hidden" name="order_{$key}" value="{$counter}">
-              </td>
-              <td class="center"><label for="{$key}">{function="str_replace('_', ' ', $key)"}</label></td>
-              <td><label for="{$key}">{$value.description}</label></td>
-            </tr>
-            {/loop}
+              {loop="$enabledPlugins"}
+                <tr data-line="{$key}" data-order="{$counter}" class="main-row">
+                  <td class="center"><input type="checkbox" name="{$key}" id="{$key}" checked="checked"></td>
+                  <td class="center">
+                    <label for="{$key}"><strong>{function="str_replace('_', ' ', $key)"}</strong></label>
+                  </td>
+                  <td><div class="pure-u-0 pure-u-lg-visible"><label for="{$key}">{$value.description}</label></div></td>
+                  <td class="center">
+                    {if="count($enabledPlugins)>1"}
+                    <a href="#" class="order"
+                       onclick="return orderUp(this.parentNode.parentNode.getAttribute('data-order'));">
+                      ▲
+                    </a>
+                    <a href="#" class="order"
+                       onclick="return orderDown(this.parentNode.parentNode.getAttribute('data-order'));">
+                      ▼
+                    </a>
+                    {/if}
+                    <input type="hidden" name="order_{$key}" value="{$counter}">
+                  </td>
+                </tr>
+                <tr class="pure-u-lg-0 mobile-row">
+                  <td colspan="4"><label for="{$key}">{$value.description}</label></td>
+                </tr>
+              {/loop}
             </tbody>
+            <tfoot>
+              <tr>
+                <th class="center">{'Disable'|t}</th>
+                <th>{'Name'|t}</th>
+                <th><div class="pure-u-0 pure-u-lg-visible">{'Description'|t}</div></th>
+                <th class="center">{'Order'|t}</th>
+              </tr>
+            </tfoot>
           </table>
           {/if}
         </div>
@@ -73,18 +86,36 @@
           <p>{'No plugin disabled.'|t}</p>
           {else}
           <table>
-            <tr>
-              <th class="center">{'Enable'|t}</th>
-              <th>{'Name'|t}</th>
-              <th>{'Description'|t}</th>
-            </tr>
-            {loop="$disabledPlugins"}
-            <tr>
-              <td class="center"><input type="checkbox" name="{$key}" id="{$key}"></td>
-              <td class="center"><label for="{$key}">{function="str_replace('_', ' ', $key)"}</label></td>
-              <td><label for="{$key}">{$value.description}</label></td>
-            </tr>
-            {/loop}
+            <thead>
+              <tr>
+                <th class="center">{'Enable'|t}</th>
+                <th>{'Name'|t}</th>
+                <th><div class="pure-u-0 pure-u-lg-visible">{'Description'|t}</div></th>
+              </tr>
+            </thead>
+            <tbody>
+              {loop="$disabledPlugins"}
+                <tr class="main-row">
+                  <td class="center"><input type="checkbox" name="{$key}" id="{$key}"></td>
+                  <td class="center">
+                    <label for="{$key}"><strong>{function="str_replace('_', ' ', $key)"}</strong></label>
+                  </td>
+                  <td><div class="pure-u-0 pure-u-lg-visible">
+                    <label for="{$key}">{$value.description}</label>
+                  </div></td>
+                </tr>
+                <tr class="pure-u-lg-0 mobile-row">
+                  <td colspan="3"><label for="{$key}">{$value.description}</label></td>
+                </tr>
+              {/loop}
+            </tbody>
+            <tfoot>
+              <tr>
+                <th class="center">{'Enable'|t}</th>
+                <th>{'Name'|t}</th>
+                <th><div class="pure-u-0 pure-u-lg-visible">{'Description'|t}</div></th>
+              </tr>
+            </tfoot>
           </table>
           {/if}
         </div>
@@ -118,6 +149,9 @@
                     <div class="float_label">
                       <label for="{$key}">
                         <code>{$key}</code>
+                        {if="isset($value.desc)"}
+                          {$value.desc}
+                        {/if}
                       </label>
                     </div>
                     <div class="float_input">
