@@ -146,16 +146,29 @@ if (newVersionDismiss != null) {
 var loginButton = document.getElementById('login-button');
 var loginBlock = document.getElementById('header-login-form');
 
-loginButton.addEventListener('click', function(event) {
-    event.preventDefault();
-    loginBlock.classList.toggle('open');
-    document.getElementById('content').style.boxShadow = 'none';
-});
+if (loginButton != null) {
+    loginButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        loginBlock.classList.toggle('open');
+        document.getElementById('content').style.boxShadow = 'none';
+    });
+}
 
 // Focus on login field.
-loginBlock.addEventListener('transitionend', function() {
-    loginBlock.firstElementChild.focus();
-});
+if (loginBlock != null) {
+    loginBlock.addEventListener('transitionend', function () {
+        loginBlock.firstElementChild.focus();
+    });
+}
 
 var hiddenReturnurl = document.getElementsByName('returnurl');
-hiddenReturnurl.value = window.location.href;
+if (hiddenReturnurl != null) {
+    hiddenReturnurl.value = window.location.href;
+}
+
+
+var autofocusElements = document.querySelector('.autofocus');
+console.log(autofocusElements);
+if (autofocusElements != null) {
+    autofocusElements.focus();
+}
