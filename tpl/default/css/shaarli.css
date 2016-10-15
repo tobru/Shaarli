@@ -796,6 +796,12 @@ pre {
     }
 }
 
+/**
+ * Page visitor (page form extended)
+ */
+.page-visitor {
+    background: url(../img/noise.png) #fff;
+}
 
 #page404 {
     color: #3f3f3f;
@@ -984,6 +990,16 @@ pre {
     margin: 15px 0;
 }
 
-@media screen and (max-width: 64em) {
-
+/**
+ * TAG CLOUD
+ */
+#cloudtag {
+    padding: 10px;
+    text-align: center;
 }
+
+#cloudtag, #cloudtag a {
+    color: #000;
+    text-decoration: none;
+}
+
