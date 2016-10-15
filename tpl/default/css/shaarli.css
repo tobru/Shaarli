@@ -789,6 +789,11 @@ pre {
         content:"\a\a";
         white-space: pre;
     }
+
+    .page-form-complete .radio-buttons {
+        text-align: left;
+        padding: 5px 15px;
+    }
 }
 
 
@@ -969,4 +974,16 @@ pre {
     #pluginform .mobile-row, #pluginform .mobile-row td {
         border-top-style: none;
     }
+}
+
+
+/**
+ * IMPORT
+ */
+#import-field {
+    margin: 15px 0;
+}
+
+@media screen and (max-width: 64em) {
+
 }

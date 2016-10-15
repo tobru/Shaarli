@@ -166,9 +166,10 @@ if (hiddenReturnurl != null) {
     hiddenReturnurl.value = window.location.href;
 }
 
-
+/**
+ * Autofocus text fields
+ */
 var autofocusElements = document.querySelector('.autofocus');
-console.log(autofocusElements);
 if (autofocusElements != null) {
     autofocusElements.focus();
 }
