@@ -1003,3 +1003,68 @@ pre {
     text-decoration: none;
 }
 
+/**
+ * Picture wall CSS
+ */
+#picwall_container {
+    color: #fff;
+    background-color: #000;
+    clear: both;
+}
+
+.picwall_pictureframe {
+    background-color: #000;
+    z-index: 5;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+    width: 90px;
+    height: 90px;
+    overflow: hidden;
+    text-align: center;
+    float: left;
+}
+
+.b-lazy {
+    -webkit-transition: opacity 500ms ease-in-out;
+    -moz-transition: opacity 500ms ease-in-out;
+    -o-transition: opacity 500ms ease-in-out;
+    transition: opacity 500ms ease-in-out;
+    opacity: 0;
+}
+.b-lazy.b-loaded {
+    opacity: 1;
+}
+
+.picwall_pictureframe img {
+    max-width: 100%;
+    height: auto;
+    color: transparent;
+} /* Adapt the width of the image */
+
+.picwall_pictureframe a {
+    text-decoration: none;
+}
+
+/* CSS to show title when hovering an image - no javascript required. */
+.picwall_pictureframe span.info {
+    display: none;
+}
+
+.picwall_pictureframe:hover span.info {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+    font-weight: bold;
+    font-size: 8pt;
+    color: #fff;
+    text-align: left;
+    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* FF3+, Saf3+, Opera 10.10+, Chrome, IE9 */
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
+    /* IE6IE9 */
+    text-shadow: 2px 2px 1px #000000;
+}
