@@ -801,6 +801,7 @@ pre {
  */
 .page-visitor {
     background: url(../img/noise.png) #fff;
+    color: #000;
 }
 
 #page404 {
@@ -1003,10 +1004,15 @@ pre {
     text-decoration: none;
 }
 
+#cloudtag .count {
+    color: #7f7f7f;
+}
+
 /**
  * Picture wall CSS
  */
 #picwall_container {
+    margin: 0 10px 10px 10px;
     color: #fff;
     background-color: #000;
     clear: both;
@@ -1067,4 +1073,64 @@ pre {
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
     /* IE6IE9 */
     text-shadow: 2px 2px 1px #000000;
+}
+
+/**
+ * DAILY
+ */
+.daily-desc {
+    color: #7f7f7f;
+    font-size: 0.8em;
+}
+
+.daily-about a {
+    color: #343434;
+    text-decoration: none;
+}
+
+.daily-about a:hover {
+    color: #7f7f7f;
+}
+
+.daily-about h3:before, .daily-about h3:after {
+    display: block;
+    content:"";
+    background: linear-gradient(to right, #d5d4d4, #252525, #d5d4d4);
+    height: 1px;
+    width: 90%;
+    margin: 10px auto;
+}
+
+.daily-entry .daily-entry-title:after {
+    display: block;
+    content:"";
+    background: linear-gradient(to right, #fff, #515151, #fff);
+    height: 1px;
+    width: 70%;
+    margin: 5px auto;
+}
+
+.daily-entry .daily-entry-title {
+    margin: 10px 0 0 0;
+}
+
+.daily-entry .daily-entry-title a {
+    color: #000;
+    text-decoration: none;
+}
+
+.daily-entry .daily-entry-description {
+    padding: 5px 5px 0 5px;
+    font-size: 0.9em;
+    text-align: justify;
+}
+
+.daily-entry .daily-entry-tags {
+    padding: 0 5px 5px 5px;
+    font-size: 0.8em;
+}
+
+.daily-entry-thumbnail {
+    float: left;
+    margin: 15px 5px 5px 5px;
 }
