@@ -608,7 +608,7 @@ pre {
     color: #b0ddce;
 }
 
-.page-form h2 {
+.page-form .window-title {
     margin: 0 0 10px 0;
     padding: 10px 0;
     width: 100%;
@@ -619,7 +619,7 @@ pre {
     border-bottom: 1px solid #797979;
 }
 
-.page-form h3 {
+.page-form .window-subtitle {
     text-align: center;
 }
 
