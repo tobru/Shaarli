@@ -10,8 +10,8 @@
   <div class="pure-u-lg-1-6 pure-u-1-8"></div>
   <div class="pure-u-lg-2-3 pure-u-3-4 page-form page-visitor" id="daily">
     <h2 class="window-title">
-      The Daily Shaarli
-      <a href="?do=dailyrss" title="1 RSS entry per day"><i class="fa fa-rss"></i></a>
+      {'The Daily Shaarli'|t}
+      <a href="?do=dailyrss" title="{'1 RSS entry per day'|t}"><i class="fa fa-rss"></i></a>
     </h2>
 
     <div id="plugin_zone_start_daily" class="plugin_zone">
@@ -27,24 +27,24 @@
           {if="$previousday"}
             <a href="?do=daily&amp;day={$previousday}">
               <i class="fa fa-arrow-left"></i>
-              Previous day
+              {'Previous day'|t}
             </a>
           {/if}
         </div>
         <div class="daily-desc pure-u-lg-1-3 pure-u-1 center">
-          All links of one day in a single page.
+          {'All links of one day in a single page.'|t}
         </div>
         <div class="pure-u-lg-1-3 pure-u-1 center">
           {if="$nextday"}
             <a href="?do=daily&amp;day={$nextday}">
-              Next day
+              {'Next day'|t}
               <i class="fa fa-arrow-right"></i>
             </a>
           {/if}
         </div>
       </div>
       <div>
-        <h3>{function="strftime('%A %d, %B %Y', $day)"}</h3>
+        <h3 class="window-subtitle">{function="strftime('%A %d, %B %Y', $day)"}</h3>
 
         <div id="plugin_zone_about_daily" class="plugin_zone">
           {loop="$daily_about_plugin"}
@@ -64,7 +64,7 @@
                 {$link=$value}
                 <div class="daily-entry">
                   <div class="daily-entry-title center">
-                    <a href="?{$link.linkdate|smallHash}" title="Permalink">
+                    <a href="?{$link.linkdate|smallHash}" title="{'Permalink'|t}">
                       <i class="fa fa-link"></i>
                     </a>
                     <a href="{$link.real_url}">{$link.title}</a>
