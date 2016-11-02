@@ -11,7 +11,7 @@
   <div class="pure-u-1">
     <div class="pure-menu menu-transform pure-menu-horizontal pure-g">
       <ul class="pure-menu-list pure-u-lg-11-12 pure-u-1">
-        <li class="pure-menu-item pure-menu-selected pure-u-0 pure-u-lg-visible">
+        <li class="pure-menu-item pure-u-0 pure-u-lg-visible">
           <a href="{$titleLink}" class="pure-menu-link">
             <i class="fa fa-home"></i>
           </a>
@@ -24,9 +24,6 @@
             <a href="?do=tools" class="pure-menu-link">{'Tools'|t}</a>
           </li>
         {/if}
-        <li class="pure-menu-item pure-u-lg-0">
-          <a href="?do=atom{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
-        </li>
         <li class="pure-menu-item">
           <a href="?do=tagcloud" class="pure-menu-link">{'Tag cloud'|t}</a>
         </li>
@@ -43,14 +40,17 @@
           </li>
         {/loop}
         {if="isLoggedIn()"}
-          <li class="pure-menu-item">
+          <li class="pure-menu-item pure-u-lg-0">
             <a href="?do=logout" class="pure-menu-link">{'Logout'|t}</a>
           </li>
         {else}
-          <li class="pure-menu-item">
+          <li class="pure-menu-item pure-u-lg-0">
             <a href="?do=login" class="pure-menu-link">{'Login'|t}</a>
           </li>
         {/if}
+        <li class="pure-menu-item pure-u-lg-0">
+          <a href="?do=atom{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
+        </li>
       </ul>
       <div class="header-buttons pure-u-lg-1-12 pure-u-0 pure-u-lg-visible">
         <ul class="pure-menu-list">
@@ -80,7 +80,7 @@
 
 <div id="header" class="pure-u-0 pure-u-lg-visible">
   <h1 id="header-title">
-    <a href="{if="{$titleLink}">
+    <a href="$titleLink">
       {$shaarlititle}
     </a>
   </h1>
@@ -99,7 +99,6 @@
         {if="!empty($search_term)"}
              value="{$search_term}"
         {/if}
-        tabindex="1"
       >
       <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
     </form>
@@ -110,7 +109,6 @@
         {/if}
         autocomplete="off" data-multiple data-minChars="1"
         data-list="{loop="$tags"}{$key}, {/loop}"
-        tabindex="2"
       >
       <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
     </form>

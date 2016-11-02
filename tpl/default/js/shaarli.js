@@ -68,16 +68,18 @@ var searchInputs = document.querySelectorAll('#search input[type="text"]');
 });
 
 /**
- * Fold/Expand shaares description.
+ * Fold/Expand shaares description and thumbnail.
  */
 var foldButtons = document.querySelectorAll('.fold-button');
 [].forEach.call(foldButtons, function(foldButton) {
     // Retrieve description
     var description = null;
+    var thumbnail = null;
     var linklistItem = getParentByClass(foldButton, 'linklist-item');
     if (linklistItem != null) {
         description = linklistItem.querySelector('.linklist-item-description');
-        if (description != null) {
+        thumbnail = linklistItem.querySelector('.linklist-item-thumbnail');
+        if (description != null || thumbnail != null) {
             foldButton.style.display = 'inline';
         }
     }
@@ -88,11 +90,21 @@ var foldButtons = document.querySelectorAll('.fold-button');
         // Switch fold/expand - up = fold
         if (event.target.classList.contains('fa-chevron-up')) {
             event.target.title = 'Expand';
-            description.style.display = 'none';
+            if (description != null) {
+                description.style.display = 'none';
+            }
+            if (thumbnail != null) {
+                thumbnail.style.display = 'none';
+            }
         }
         else {
             event.target.title = 'Fold';
-            description.style.display = 'block';
+            if (description != null) {
+                description.style.display = 'block';
+            }
+            if (thumbnail != null) {
+                thumbnail.style.display = 'block';
+            }
         }
         event.target.classList.toggle('fa-chevron-down');
         event.target.classList.toggle('fa-chevron-up');

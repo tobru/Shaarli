@@ -137,7 +137,7 @@
   <div class="pure-g">
     <div class="pure-u-lg-1-6 pure-u-1-8"></div>
     <div class="pure-u-lg-2-3 pure-u-3-4 page-form page-form-light">
-      <h2>{'Plugin configuration'|t}</h2>
+      <h2 class="window-title">{'Plugin configuration'|t}</h2>
       <section id="plugin_parameters">
         <div>
           {if="count($enabledPlugins)==0"}
@@ -153,12 +153,12 @@
                       <label for="{$key}">
                         <code>{$key}</code>
                         {if="isset($value.desc)"}
-                          {$value.desc}
+                          &middot; {$value.desc}
                         {/if}
                       </label>
                     </div>
                     <div class="float_input">
-                      <input name="{$key}" value="{$value}" id="{$key}" type="text" />
+                      <input name="{$key}" value="{$value.value}" id="{$key}" type="text" />
                     </div>
                   </div>
                   {/loop}
