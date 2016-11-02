@@ -28,7 +28,19 @@
             <input type="submit" value="Search" class="bigbutton">
         </form>
         {loop="$plugins_header.fields_toolbar"}
-            {$value}
+            <form
+                {loop="$value"}
+                    {if="$key!='inputs'"}
+                        {$key}="{$value}"
+                    {/if}
+                {/loop}>
+                {loop="$value.inputs"}
+                    <input
+                    {loop="$value"}
+                        {$key}="{$value}"
+                    {/loop}>
+                {/loop}
+            </form>
         {/loop}
     </div>
 </div>
