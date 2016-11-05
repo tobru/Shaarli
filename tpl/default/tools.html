@@ -45,11 +45,13 @@
       </a>
     </div>
 
-
+    {loop="$tools_plugin"}
+      <div class="tools-item">
+        {$value}
+      </div>
+    {/loop}
   </div>
-  {loop="$tools_plugin"}
-    {$value}
-  {/loop}
+
 
   <div class="clear"></div>
 </div>

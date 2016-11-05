@@ -110,9 +110,11 @@
               <div class="linklist-item-infos-dateblock pure-u-lg-3-8 pure-u-1">
                 <a href="?{$value.shorturl}" title="{'Permalink'|t}">
                   {if="!$hide_timestamps || isLoggedIn()"}
-                    <span class="linkdate">
+                    {$updated=$value.updated_timestamp ? 'Edited: '. strftime('%c', $value.updated_timestamp) : 'Permalink'}
+                    <span class="linkdate" title="{$updated}">
                       <i class="fa fa-clock-o"></i>
-                      {function="strftime('%d %B %Y %H:%M', $value.timestamp)"} &middot;
+                      {function="strftime('%d %B %Y %H:%M', $value.timestamp)"}{if="$value.updated_timestamp"}*{/if}
+                      &middot;
                     </span>
                   {/if}
                   {'permalink'|t}

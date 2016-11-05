@@ -257,8 +257,6 @@ pre {
 
 #header-login-form {
     height: 0;
-    text-align: center;
-    background: #1b926c;
     transition: 0.3s;
 }
 
@@ -266,49 +264,10 @@ pre {
     display: block;
     height: 30px;
     padding: 5px 0;
-    box-shadow: 0 1px 1px 1px #797979;
 }
 
-#header-login-form input[type="text"], #header-login-form input[type="password"], #header-login-form .remember-me {
-    margin: 0 0 5px 0;
-    padding: 5px 5px 3px 15px;
-    height: 20px;
+#header-login-form input[type="text"], #header-login-form input[type="password"] {
     width: 200px;
-    background: #1fa67a;
-    border: medium none currentColor;
-    border-radius: 25px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
-    color: #b0ddce;
-}
-
-/* because chrome */
-#header-login-form input[type="text"]::-webkit-input-placeholder,
-#header-login-form input[type="password"]::-webkit-input-placeholder
-{
-    color: #b0ddce;
-}
-
-#header-login-form .remember-me {
-    display: inline-block;
-    width: auto;
-    padding: 5px 20px 3px 20px;
-    cursor: pointer;
-}
-
-#header-login-form .remember-me label, #header-login-form .remember-me input {
-    cursor: pointer;
-}
-
-#header-login-form input[type="submit"] {
-    display: inline-block;
-    margin: 0 0 5px 0;
-    height: 25px;
-    width: 100px;
-    background: #0C7653;
-    border: medium none currentColor;
-    border-radius: 25px;
-    box-shadow: 1px 1px 2px #005C3E, -1px -1px 2px #005C3E;
-    color: #b0ddce;
 }
 
 #header-login-form input, #header-login-form .remember-me {
@@ -320,6 +279,59 @@ pre {
 #header-login-form.open input, #header-login-form.open .remember-me {
     visibility: visible;
     opacity: 1;
+}
+
+.subheader-form {
+    text-align: center;
+    background: #1b926c;
+    display: block;
+}
+
+.subheader-form.open {
+    height: 30px;
+    padding: 5px 0;
+}
+
+.subheader-form input[type="text"], .subheader-form input[type="password"], .subheader-form .remember-me {
+    margin: 0 0 5px 0;
+    padding: 5px 5px 3px 15px;
+    height: 20px;
+    width: 20%;
+    background: #1fa67a;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
+    color: #b0ddce;
+}
+
+/* because chrome */
+.subheader-form input[type="text"]::-webkit-input-placeholder,
+.subheader-form input[type="password"]::-webkit-input-placeholder
+{
+    color: #b0ddce;
+}
+
+.subheader-form .remember-me {
+    display: inline-block;
+    width: auto;
+    padding: 5px 20px 3px 20px;
+    cursor: pointer;
+}
+
+.subheader-form .remember-me label, .subheader-form .remember-me input {
+    cursor: pointer;
+}
+
+.subheader-form input[type="submit"] {
+    display: inline-block;
+    margin: 0 0 5px 0;
+    height: 25px;
+    width: 100px;
+    background: #0C7653;
+    border: medium none currentColor;
+    border-radius: 25px;
+    box-shadow: 1px 1px 2px #005C3E, -1px -1px 2px #005C3E;
+    color: #b0ddce;
 }
 
 .new-version-message {

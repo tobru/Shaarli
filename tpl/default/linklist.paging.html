@@ -14,14 +14,16 @@
               ><i class="fa fa-key"></i></a>
             {/if}
             {loop="$action_plugin"}
-              <!-- FIXME! Plugin update to handle that. -->
-              <a href="?privateonly" title="{$value.title}" class=
-                {if="$value.on"}
-                  "filter-on"
-                {else}
-                  "filter-off"
-                {/if}
-              >{$value.url}</a>
+              {$value.class=isset($value.class) ? $value.class : ''}
+              {$value.class=!empty($value.on) ? $value.class .' filter-on' : $value.class .' filter-off'}
+              <a
+                {loop="$value"}
+                  {if="$key!='html'"}
+                    {$key}="{$value}"
+                  {/if}
+                {/loop}>
+                {$value.html}
+              </a>
             {/loop}
           {/if}
         </div>

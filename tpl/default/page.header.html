@@ -33,10 +33,17 @@
         <li class="pure-menu-item">
           <a href="?do=daily" class="pure-menu-link">{'Daily'|t}</a>
         </li>
-        <!-- FIXME! update plugin system to handle this -->
         {loop="$plugins_header.buttons_toolbar"}
           <li class="pure-menu-item">
-            <a href="{$value.url}" class="pure-menu-link">{$value.title}</a>
+            <a
+              {$value.class=isset($value.class) ? $value.class . ' pure-menu-link' : 'pure-menu-link'}
+              {loop="$value"}
+                {if="$key!='html'"}
+                  {$key}="{$value}"
+                {/if}
+              {/loop}>
+              {$value.html}
+            </a>
           </li>
         {/loop}
         {if="isLoggedIn()"}
@@ -80,7 +87,7 @@
 
 <div id="header" class="pure-u-0 pure-u-lg-visible">
   <h1 id="header-title">
-    <a href="$titleLink">
+    <a href="{$titleLink}">
       {$shaarlititle}
     </a>
   </h1>
@@ -116,9 +123,26 @@
 </div>
 
 <div id="content">
+  {loop="$plugins_header.fields_toolbar"}
+    <form
+      {loop="$value"}
+        {if="$key!='inputs'"}
+          {$key}="{$value}"
+        {/if}
+      {/loop}>
+      <div class="subheader-form open pure-u-0 pure-u-lg-visible pure-u-lg-1">
+        {loop="$value.inputs"}
+          <input
+            {loop="$value"}
+              {$key}="{$value}"
+            {/loop}>
+        {/loop}
+      </div>
+    </form>
+  {/loop}
   {if="!isLoggedIn()"}
     <form method="post" name="loginform">
-      <div id="header-login-form">
+      <div class="subheader-form" id="header-login-form">
         <input type="text" name="login" placeholder="{'Username'|t}" tabindex="3">
         <input type="password" name="password" placeholder="{'Password'|t}" tabindex="5">
         <div class="remember-me">
@@ -131,7 +155,6 @@
       </div>
     </form>
   {/if}
-
 {if="!empty($newVersion) || !empty($versionError)"}
   <div class="pure-g new-version-message pure-alert pure-alert-warning pure-alert-closable">
     <div class="pure-u-2-24"></div>
