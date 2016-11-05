@@ -124,7 +124,7 @@
                   &middot;
                   {$link_plugin_counter=count($value.link_plugin)}
                   {loop="$value.link_plugin"}
-                    <span>{$value}</span>
+                    {$value}
                     {if="$link_plugin_counter - 1 != $counter"}&middot;{/if}
                   {/loop}
                 {/if}
@@ -150,8 +150,6 @@
   </div>
 
   {include="linklist.paging"}
-
-</div>
 
 {include="page.footer"}
 </body>
