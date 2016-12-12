@@ -12,6 +12,15 @@
 
 <div id="linklist">
 
+  <div id="linkcount" class="center">
+    {if="!empty($linkcount)"}
+    <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
+    {if="$privateLinkcount>0"}
+    &middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
+    {/if}
+    {/if}
+  </div>
+
   {include="linklist.paging"}
 
   <div id="plugin_zone_start_linklist" class="plugin_zone">

@@ -186,11 +186,3 @@
 {/if}
 
   <div class="clear"></div>
-  <div id="linkcount" class="center">
-    {if="!empty($linkcount)"}
-    <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
-    {if="$privateLinkcount>0"}
-    &middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
-    {/if}
-    {/if}
-  </div>
