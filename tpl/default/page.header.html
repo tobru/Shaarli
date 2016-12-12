@@ -10,15 +10,17 @@
   </div>
   <div class="pure-u-1">
     <div class="pure-menu menu-transform pure-menu-horizontal pure-g">
-      <ul class="pure-menu-list pure-u-lg-11-12 pure-u-1">
+      <ul class="pure-menu-list pure-u-lg-5-6 pure-u-1">
         <li class="pure-menu-item pure-u-0 pure-u-lg-visible">
           <a href="{$titleLink}" class="pure-menu-link">
-            <i class="fa fa-home"></i>
+            <i class="fa fa-home"></i> {$shaarlititle}
           </a>
         </li>
         {if="isLoggedIn() || $openshaarli"}
           <li class="pure-menu-item">
-            <a href="?do=addlink" class="pure-menu-link">{'Shaare'|t}</a>
+            <a href="?do=addlink" class="pure-menu-link">
+              <i class="fa fa-plus" ></i> {'Shaare'|t}
+            </a>
           </li>
           <li class="pure-menu-item">
             <a href="?do=tools" class="pure-menu-link">{'Tools'|t}</a>
@@ -59,8 +61,13 @@
           <a href="?do=atom{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
         </li>
       </ul>
-      <div class="header-buttons pure-u-lg-1-12 pure-u-0 pure-u-lg-visible">
+      <div class="header-buttons pure-u-lg-1-6 pure-u-0 pure-u-lg-visible">
         <ul class="pure-menu-list">
+          <li class="pure-menu-item">
+            <a href="#" class="pure-menu-link" id="search-button" title="{'Search'|t}">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
           {if="!isLoggedIn()"}
             <li class="pure-menu-item">
               <a href="?do=login" class="pure-menu-link" id="login-button" title="{'Login'|t}">
@@ -85,44 +92,33 @@
   </div>
 </div>
 
-<div id="header" class="pure-u-0 pure-u-lg-visible">
-  <h1 id="header-title">
-    <a href="{$titleLink}">
-      {$shaarlititle}
-    </a>
-  </h1>
-  <div id="linkcount">
-    {if="!empty($linkcount)"}
-      <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
-      {if="$privateLinkcount>0"}
-        - <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
-      {/if}
-    {/if}
-  </div>
-
-  <div id="search">
-    <form method="GET" class="searchform" name="searchform">
-      <input type="text" tabindex="1" id="searchform_value" name="searchterm" placeholder="{'Search text'|t}"
-        {if="!empty($search_term)"}
-             value="{$search_term}"
-        {/if}
-      >
-      <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-    </form>
-    <form method="GET" class="tagfilter" name="tagfilter">
-      <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="{'Filter by tag'|t}"
-        {if="!empty($search_tags)"}
-          value="{$search_tags}"
-        {/if}
-        autocomplete="off" data-multiple data-minChars="1"
-        data-list="{loop="$tags"}{$key}, {/loop}"
-      >
-      <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
-    </form>
-  </div>
-</div>
-
 <div id="content">
+  <div id="search" class="subheader-form">
+    <div class="pure-g">
+      <div class="pure-u-1 pure-u-lg-1-2">
+        <form method="GET" class="searchform" name="searchform">
+          <input type="text" tabindex="1" id="searchform_value" name="searchterm" placeholder="{'Search text'|t}"
+                 {if="!empty($search_term)"}
+                 value="{$search_term}"
+                 {/if}
+          >
+          <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+      <div class="pure-u-1 pure-u-lg-1-2">
+        <form method="GET" class="tagfilter" name="tagfilter">
+          <input type="text" tabindex="2" name="searchtags" id="tagfilter_value" placeholder="{'Filter by tag'|t}"
+                 {if="!empty($search_tags)"}
+                 value="{$search_tags}"
+                 {/if}
+          autocomplete="off" data-multiple data-minChars="1"
+          data-list="{loop="$tags"}{$key}, {/loop}"
+          >
+          <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+  </div>
   {loop="$plugins_header.fields_toolbar"}
     <form
       {loop="$value"}
@@ -189,4 +185,12 @@
   </div>
 {/if}
 
-<div class="clear"></div>
+  <div class="clear"></div>
+  <div id="linkcount" class="center">
+    {if="!empty($linkcount)"}
+    <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
+    {if="$privateLinkcount>0"}
+    &middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
+    {/if}
+    {/if}
+  </div>

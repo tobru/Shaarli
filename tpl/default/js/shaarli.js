@@ -53,20 +53,6 @@ function getParentByClass(el, className) {
     window.addEventListener(WINDOW_CHANGE_EVENT, closeMenu);
 })(this, this.document);
 
-
-/**
- * Expend search fields on focus.
- */
-var searchInputs = document.querySelectorAll('#search input[type="text"]');
-[].forEach.call(searchInputs, function(searchInput) {
-    searchInput.addEventListener('focus', function(event) {
-        event.target.style.width = '250px';
-    });
-    searchInput.addEventListener('blur', function(event) {
-        event.target.style.width = '140px';
-    });
-});
-
 /**
  * Fold/Expand shaares description and thumbnail.
  */
@@ -184,4 +170,18 @@ if (hiddenReturnurl != null) {
 var autofocusElements = document.querySelector('.autofocus');
 if (autofocusElements != null) {
     autofocusElements.focus();
+}
+
+/**
+ * Hide search bar, and display it on search click.
+ */
+var searchBar = document.getElementById('search');
+var searchButton = document.getElementById('search-button');
+if (searchBar != null && searchButton != null) {
+    searchBar.classList.toggle('closed');
+    searchButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        searchBar.classList.toggle('closed');
+        searchBar.classList.toggle('open');
+    });
 }

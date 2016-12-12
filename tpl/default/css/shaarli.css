@@ -170,11 +170,10 @@ pre {
 #header {
     width: 100%;
     height: 150px;
-    background: url(../img/noise.png), #1fa67a url(../img/logo.png) no-repeat fixed 10px 2.5em;
+    background: url(../img/noise.png), #979797 url(../img/logo.png) no-repeat 10px 2.5em;
 }
 
 #header h1 {
-    position: fixed;
     float: left;
     margin: 45px 0 0 125px;
     width: 55%;
@@ -190,7 +189,7 @@ pre {
 
     overflow: hidden;
     height: 100px;
-    color: #b0ddce;
+    color: #252525;
     text-decoration: none;
     z-index: 1;
 
@@ -199,7 +198,7 @@ pre {
 }
 
 #header h1 a:hover {
-    color: #d1fff0;
+    color: #fff;
 }
 
 .header-buttons {
@@ -207,36 +206,16 @@ pre {
 }
 
 #linkcount {
-    /* position: fixed; */
-    position: absolute;
-    top: 40px;
-    right: 10px;
-    color: #b0ddce;
+    color: #252525;
     font-size: 0.8em;
 }
 
 #search {
-    /**
-     * Can't make it work with awesomplete list z-index. Any idea?
-     * position: fixed;
-     */
-    position: absolute;
-    top: 60px;
-    right: 10px;
-    width: 30%;
-    text-align: right;
+    margin-top: 5px;
 }
 
 #search input[type="text"] {
-    margin: 0 0 5px 0;
-    padding: 5px 5px 3px 15px;
-    height: 20px;
-    width: 140px;
-    transition: width .5s ease;
-    background: #1b926c;
-    border: medium none currentColor;
-    border-radius: 25px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
+    width: 250px;
     color: #b0ddce;
 }
 
@@ -254,6 +233,20 @@ pre {
 #search button:hover {
     color: #fff;
 }
+
+@media screen and (min-width: 64em) {
+    #search .searchform {
+        margin-right: 25px;
+        text-align: right;
+    }
+
+    #search .tagfilter {
+        margin-left: 25px;
+        text-align: left;
+    }
+}
+
+
 
 #header-login-form {
     height: 0;
@@ -285,11 +278,33 @@ pre {
     text-align: center;
     background: #1b926c;
     display: block;
+    //transition: 0.3s;
 }
 
-.subheader-form.open {
-    height: 30px;
-    padding: 5px 0;
+@media screen and (min-width: 64em) {
+
+    .subheader-form.closed {
+        height: 0;
+    }
+
+    .subheader-form.open {
+        height: 30px;
+        padding: 5px 0;
+    }
+
+    .subheader-form * {
+        --transition: visibility 1s, opacity 1s;
+    }
+
+    .subheader-form.open * {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    .subheader-form.closed * {
+        visibility: hidden;
+        opacity: 0;
+    }
 }
 
 .subheader-form input[type="text"], .subheader-form input[type="password"], .subheader-form .remember-me {
@@ -348,8 +363,6 @@ pre {
  */
 #content {
     position: relative;
-    /* Hack-ish way to only shadow the top part. */
-    box-shadow: 0 -20px 20px -20px #797979;
     z-index: 2;
     background: url(../img/noise.png) #979797;
 }
@@ -362,8 +375,7 @@ pre {
 
 @media screen and (min-width: 64em) {
     #content {
-        /* https://css-tricks.com/fighting-the-space-between-inline-block-elements/ */
-        margin-top: -4px;
+        margin-top: 34px;
     }
 }
 
@@ -371,8 +383,6 @@ pre {
  * CONTENT - LINKLIST PAGING
  * 64em -> lg
  */
-
-
 .linklist-filters {
     margin: 10px 0;
     color: #252525;
