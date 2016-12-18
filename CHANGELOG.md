@@ -5,7 +5,19 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 
-## [v0.8.1](https://github.com/shaarli/Shaarli/releases/tag/v0.8.1) - UNPUBLISHED
+## [v0.9.0](https://github.com/shaarli/Shaarli/releases/tag/v0.9.0) - UNPUBLISHED
+
+### Added
+
+### Changed
+
+### Fixed
+
+
+## [v0.8.1](https://github.com/shaarli/Shaarli/releases/tag/v0.8.1) - 2016-12-12
+
+> Note: this version will create an automatic backup of your database if anything goes wrong. 
+
 ### Added
 - Add CHANGELOG.md to track the whole project's history
 - Enable Composer cache for Travis builds
@@ -13,20 +25,39 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Plugins:
     - Add an [Isso](https://posativ.org/isso/) plugin to enable user comments on permalinks
     - Allow defining init functions, e.g. for performing checks and error processing
+    - Add a Piwik plugin for analytics.
+    - Markdown: add warning notice regarding HTML rendering
+- Meta tag to *not* send the referrer to external resources.
 
 ### Changed
-- Cleanup `{loop}` declarations in templates
+- Link ID complete refactoring:
+    - Links now have a numeric ID instead of dates
+    - Short URLs are now created once and can't change over time (previous URL are kept)
+- Templates: 
+    - Changed placeholder behaviour for: `buttons_toolbar`, `fields_toolbar` and `action_plugin`
+    - Cleanup `{loop}` declarations in templates
+    - Tools: hide Firefox Social button when not in HTTPS
+    - Firefox Social: show Shaarli's title when shaaring using Firefox Social
 - Release archives now have the same structure as GitHub-generated archives:
     - archives contain a `Shaarli` directory, itself containing sources + dependencies
     - the tarball is now gzipped
+- Plugins:
+    - Markdown: Parsedown library is now imported through Composer
 - Minor code cleanup: PHPDoc, spelling, unused variables, etc.
+- Docker: explicitly set the maximum file upload size to 10 MiB
 
 ### Fixed
 - Fix the server `<self>` value in Atom/RSS feeds
 - Plugins:
     - Tools: only display parameter description when it exists
     - archive.org: do not propose archival of private notes
+    - Markdown: 
+        - render links properly in code blocks
+        - bug regarding the `nomarkdown` tag
+    - W3C compliance
 - Use absolute URL for hashtags in RSS and ATOM feeds
+- Docker: specify the location of the favicon
+- ATOM feed: remove new line between content tag and data
 
 ### Security
 - Allow whitelisting trusted IPs, else continue banning clients upon login failure

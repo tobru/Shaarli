@@ -15,10 +15,8 @@
     {loop="$action_plugin"}
       <div class="paging_privatelinks">
         <a
-          {loop="$value"}
-            {if="$key!='html'"}
-              {$key}="{$value}"
-            {/if}
+          {loop="$value.attr"}
+            {$key}="{$value}"
           {/loop}>
           {$value.html}
         </a>

@@ -36,10 +36,8 @@
     <li><a href="?do=daily">Daily</a></li>
     {loop="$plugins_header.buttons_toolbar"}
         <li><a
-            {loop="$value"}
-                {if="$key!='html'"}
-                    {$key}="{$value}"
-                {/if}
+            {loop="$value.attr"}
+                {$key}="{$value}"
             {/loop}>
             {$value.html}
         </a></li>

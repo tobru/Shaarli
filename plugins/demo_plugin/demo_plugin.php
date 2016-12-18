@@ -56,9 +56,11 @@ function hook_demo_plugin_render_header($data)
              * and a mandatory `html` key, which contains its value.
              */
             $button = array(
-                'href' => '#',
-                'class' => 'mybutton',
-                'title' => 'hover me',
+                'attr' => array (
+                    'href' => '#',
+                    'class' => 'mybutton',
+                    'title' => 'hover me',
+                ),
                 'html' => 'DEMO buttons toolbar',
             );
             $data['buttons_toolbar'][] = $button;
@@ -87,9 +89,11 @@ function hook_demo_plugin_render_header($data)
          *      </form>
          */
         $form = array(
-            'method' => 'GET',
-            'action' => '?',
-            'class' => 'addform',
+            'attr' => array(
+                'method' => 'GET',
+                'action' => '?',
+                'class' => 'addform',
+            ),
             'inputs' => array(
                 array(
                     'type' => 'text',
@@ -102,7 +106,9 @@ function hook_demo_plugin_render_header($data)
     }
     // Another button always displayed
     $button = array(
-        'href' => '#',
+        'attr' => array(
+            'href' => '#',
+        ),
         'html' => 'Demo',
     );
     $data['buttons_toolbar'][] = $button;
@@ -197,8 +203,10 @@ function hook_demo_plugin_render_linklist($data)
      * It's also recommended to add key 'on' or 'off' for theme rendering.
      */
     $action = array(
-        'href' => '?up',
-        'title' => 'Uppercase!',
+        'attr' => array(
+            'href' => '?up',
+            'title' => 'Uppercase!',
+        ),
         'html' => '←',
     );
 

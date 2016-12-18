@@ -16,10 +16,12 @@ function hook_addlink_toolbar_render_header($data)
 {
     if ($data['_PAGE_'] == Router::$PAGE_LINKLIST && $data['_LOGGEDIN_'] === true) {
         $form = array(
-            'method' => 'GET',
-            'action' => '',
-            'name'   => 'addform',
-            'class'  => 'addform',
+            'attr' => array(
+                'method' => 'GET',
+                'action' => '',
+                'name'   => 'addform',
+                'class'  => 'addform',
+            ),
             'inputs' => array(
                 array(
                     'type' => 'text',

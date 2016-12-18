@@ -156,12 +156,12 @@ class FeedBuilder
         $link['description']  = format_description($link['description'], '', $pageaddr);
         $link['description'] .= PHP_EOL .'<br>&#8212; '. $permalink;
 
-        $pubDate = DateTime::createFromFormat(LinkDB::LINK_DATE_FORMAT, $link['linkdate']);
+        $pubDate = $link['created'];
         $link['pub_iso_date'] = $this->getIsoDate($pubDate);
 
         // atom:entry elements MUST contain exactly one atom:updated element.
         if (!empty($link['updated'])) {
-            $upDate = DateTime::createFromFormat(LinkDB::LINK_DATE_FORMAT, $link['updated']);
+            $upDate = $link['updated'];
             $link['up_iso_date'] = $this->getIsoDate($upDate, DateTime::ATOM);
         } else {
             $link['up_iso_date'] = $this->getIsoDate($pubDate, DateTime::ATOM);;
