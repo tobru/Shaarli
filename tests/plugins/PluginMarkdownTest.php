@@ -185,17 +185,4 @@ class PluginMarkdownTest extends PHPUnit_Framework_TestCase
         $data = process_markdown($md);
         $this->assertEquals($html, $data);
     }
-
-    /**
-     * Test hashtag links processed with markdown.
-     */
-    function testMarkdownHashtagLinks()
-    {
-        $md = file_get_contents('tests/plugins/resources/markdown.md');
-        $md = format_description($md);
-        $html = file_get_contents('tests/plugins/resources/markdown.html');
-
-        $data = process_markdown($md);
-        $this->assertEquals($html, $data);
-    }
 }

@@ -125,7 +125,7 @@ class FeedBuilder
         $data['show_dates'] = !$this->hideDates || $this->isLoggedIn;
         // Remove leading slash from REQUEST_URI.
         $data['self_link'] = escape(server_url($this->serverInfo))
-                           . escape($this->serverInfo['REQUEST_URI']);
+            . escape($this->serverInfo['REQUEST_URI']);
         $data['index_url'] = $pageaddr;
         $data['usepermalinks'] = $this->usePermalinks === true;
         $data['links'] = $linkDisplayed;
@@ -143,7 +143,7 @@ class FeedBuilder
      */
     protected function buildItem($link, $pageaddr)
     {
-        $link['guid'] = $pageaddr .'?'. smallHash($link['linkdate']);
+        $link['guid'] = $pageaddr .'?'. $link['shorturl'];
         // Check for both signs of a note: starting with ? and 7 chars long.
         if ($link['url'][0] === '?' && strlen($link['url']) === 7) {
             $link['url'] = $pageaddr . $link['url'];
