@@ -6,10 +6,6 @@
 <body>
 {include="page.header"}
 
-<!--{loop="$plugins_header.fields_toolbar"}
-    {$value}
-{/loop}-->
-
 <div id="linklist">
 
   <div id="linkcount" class="center">
@@ -68,8 +64,8 @@
               <div class="linklist-item-editbuttons">
                 <!-- FIXME! JS translation -->
                 <a href="#" title="{'Fold'|t}" class="fold-button"><i class="fa fa-chevron-up"></i></a>
-                <a href="?edit_link={$value.linkdate}" title="{'Edit'|t}"><i class="fa fa-pencil-square-o"></i></a>
-                <a href="?delete_link={$value.linkdate}&amp;token={$token}" title="{'Delete'|t}" class="delete-link">
+                <a href="?edit_link={$value.id}" title="{'Edit'|t}"><i class="fa fa-pencil-square-o"></i></a>
+                <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" title="{'Delete'|t}" class="delete-link">
                   <i class="fa fa-trash"></i>
                 </a>
               </div>

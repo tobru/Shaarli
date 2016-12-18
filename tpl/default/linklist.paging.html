@@ -14,13 +14,11 @@
               ><i class="fa fa-key"></i></a>
             {/if}
             {loop="$action_plugin"}
-              {$value.class=isset($value.class) ? $value.class : ''}
-              {$value.class=!empty($value.on) ? $value.class .' filter-on' : $value.class .' filter-off'}
+              {$value.attr.class=isset($value.attr.class) ? $value.attr.class : ''}
+              {$value.attr.class=!empty($value.on) ? $value.attr.class .' filter-on' : $value.attr.class .' filter-off'}
               <a
-                {loop="$value"}
-                  {if="$key!='html'"}
-                    {$key}="{$value}"
-                  {/if}
+                {loop="$value.attr"}
+                  {$key}="{$value}"
                 {/loop}>
                 {$value.html}
               </a>

@@ -2,9 +2,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="format-detection" content="telephone=no" />
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="alternate" type="application/rss+xml" href="{$feedurl}?do=rss{$searchcrits}#" title="RSS Feed" />
 <link rel="alternate" type="application/atom+xml" href="{$feedurl}?do=atom{$searchcrits}#" title="ATOM Feed" />
-<link href="images/favicon.ico#" rel="shortcut icon" type="image/x-icon" />
+<link rel="alternate" type="application/rss+xml" href="{$feedurl}?do=rss{$searchcrits}#" title="RSS Feed" />
+<link href="img/favicon.png" rel="shortcut icon" type="image/png" />
 <link type="text/css" rel="stylesheet" href="css/pure.min.css" />
 <link type="text/css" rel="stylesheet" href="css/grids-responsive.min.css">
 <link type="text/css" rel="stylesheet" href="css/pure-extras.css">
@@ -17,4 +17,4 @@
 {loop="$plugins_includes.css_files"}
   <link type="text/css" rel="stylesheet" href="{$value}#"/>
 {/loop}
-<link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch#" title="Shaarli search - {$shaarlititle|htmlspecialchars}"/>
+<link rel="search" type="application/opensearchdescription+xml" href="?do=opensearch#" title="Shaarli search - {$shaarlititle}"/>

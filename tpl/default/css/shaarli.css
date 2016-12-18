@@ -119,8 +119,9 @@ pre {
     color: #b0ddce;
 }
 
-.pure-menu-link:hover,
-.pure-menu-selected .pure-menu-link:hover {
+.pure-menu-link:hover, .pure-menu-link:focus,
+.pure-menu-selected .pure-menu-link:hover,
+.pure-menu-selected .pure-menu-link:focus {
     color: #d1fff0;
     background: transparent;
 }
@@ -375,7 +376,7 @@ pre {
 
 @media screen and (min-width: 64em) {
     #content {
-        margin-top: 34px;
+        margin-top: 33px;
     }
 }
 

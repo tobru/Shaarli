@@ -38,11 +38,9 @@
         {loop="$plugins_header.buttons_toolbar"}
           <li class="pure-menu-item">
             <a
-              {$value.class=isset($value.class) ? $value.class . ' pure-menu-link' : 'pure-menu-link'}
-              {loop="$value"}
-                {if="$key!='html'"}
-                  {$key}="{$value}"
-                {/if}
+              {$value.attr.class=isset($value.class) ? $value.attr.class . ' pure-menu-link' : 'pure-menu-link'}
+              {loop="$value.attr"}
+                {$key}="{$value}"
               {/loop}>
               {$value.html}
             </a>
@@ -121,10 +119,8 @@
   </div>
   {loop="$plugins_header.fields_toolbar"}
     <form
-      {loop="$value"}
-        {if="$key!='inputs'"}
-          {$key}="{$value}"
-        {/if}
+      {loop="$value.attr"}
+        {$key}="{$value}"
       {/loop}>
       <div class="subheader-form open pure-u-0 pure-u-lg-visible pure-u-lg-1">
         {loop="$value.inputs"}
