@@ -46,6 +46,9 @@
             </a>
           </li>
         {/loop}
+        <li class="pure-menu-item pure-u-lg-0">
+          <a href="?do=atom{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
+        </li>
         {if="isLoggedIn()"}
           <li class="pure-menu-item pure-u-lg-0">
             <a href="?do=logout" class="pure-menu-link">{'Logout'|t}</a>
@@ -55,35 +58,36 @@
             <a href="?do=login" class="pure-menu-link">{'Login'|t}</a>
           </li>
         {/if}
-        <li class="pure-menu-item pure-u-lg-0">
-          <a href="?do=atom{$searchcrits}" class="pure-menu-link">{'RSS Feed'|t}</a>
-        </li>
       </ul>
       <div class="header-buttons pure-u-lg-1-6 pure-u-0 pure-u-lg-visible">
         <ul class="pure-menu-list">
           <li class="pure-menu-item">
-            <a href="#" class="pure-menu-link" id="search-button" title="{'Search'|t}">
+            <a href="#" class="pure-menu-link subheader-opener"
+               data-open-id="search"
+               id="search-button" title="{'Search'|t}">
               <i class="fa fa-search"></i>
             </a>
           </li>
-          {if="!isLoggedIn()"}
-            <li class="pure-menu-item">
-              <a href="?do=login" class="pure-menu-link" id="login-button" title="{'Login'|t}">
-                <i class="fa fa-user"></i>
-              </a>
-            </li>
-          {else}
-            <li class="pure-menu-item">
-              <a href="?do=logout" class="pure-menu-link" title="{'Logout'|t}">
-                <i class="fa fa-sign-out"></i>
-              </a>
-            </li>
-          {/if}
           <li class="pure-menu-item">
             <a href="?do=atom{$searchcrits}" class="pure-menu-link" title="{'RSS Feed'|t}">
               <i class="fa fa-rss"></i>
             </a>
           </li>
+          {if="!isLoggedIn()"}
+          <li class="pure-menu-item">
+            <a href="?do=login" class="pure-menu-link subheader-opener"
+               data-open-id="header-login-form"
+               id="login-button" title="{'Login'|t}">
+              <i class="fa fa-user"></i>
+            </a>
+          </li>
+          {else}
+          <li class="pure-menu-item">
+            <a href="?do=logout" class="pure-menu-link" title="{'Logout'|t}">
+              <i class="fa fa-sign-out"></i>
+            </a>
+          </li>
+          {/if}
         </ul>
       </div>
     </div>
@@ -91,7 +95,7 @@
 </div>
 
 <div id="content">
-  <div id="search" class="subheader-form">
+  <div id="search" class="subheader-form open">
     <div class="pure-g">
       <div class="pure-u-1 pure-u-lg-1-2">
         <form method="GET" class="searchform" name="searchform">
@@ -138,7 +142,7 @@
         <input type="text" name="login" placeholder="{'Username'|t}" tabindex="3">
         <input type="password" name="password" placeholder="{'Password'|t}" tabindex="5">
         <div class="remember-me">
-          <input type="checkbox" name="longlastingsession" id="longlastingsession" tabindex="6">
+          <input type="checkbox" name="longlastingsession" id="longlastingsession" tabindex="6" checked>
           <label for="longlastingsession">{'Remember me'|t}</label>
         </div>
         <input type="hidden" name="token" value="{$token}">

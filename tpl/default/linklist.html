@@ -54,36 +54,32 @@
   {/if}
 
   <div class="pure-g">
-    <div class="pure-u-2-24"></div>
-    <div class="pure-u-20-24">
+    <div class="pure-u-lg-2-24 pure-u-1-24"></div>
+    <div class="pure-u-lg-20-24 pure-u-22-24">
       {loop="links"}
         <div class="linklist-item{if="$value.class"} {$value.class}{/if}">
 
           <div class="linklist-item-title">
             {if="isLoggedIn()"}
               <div class="linklist-item-editbuttons">
+                {if="$value.private"}
+                  <span class="label label-private">{'Private'|t}</span>
+                {/if}
                 <!-- FIXME! JS translation -->
+                <a href="?edit_link={$value.id}" title="{'Edit'|t}"><i class="fa fa-pencil-square-o edit-link"></i></a>
                 <a href="#" title="{'Fold'|t}" class="fold-button"><i class="fa fa-chevron-up"></i></a>
-                <a href="?edit_link={$value.id}" title="{'Edit'|t}"><i class="fa fa-pencil-square-o"></i></a>
-                <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" title="{'Delete'|t}" class="delete-link">
-                  <i class="fa fa-trash"></i>
-                </a>
               </div>
             {/if}
 
             <h2>
-              <a href="{$value.real_url}" id="{$value.shorturl}" class="linklist-link">
+              <a href="{$value.real_url}" id="{$value.shorturl}" class="">
                 {if="strpos($value.url, $value.shorturl) === false"}
                   <i class="fa fa-external-link"></i>
                 {else}
                   <i class="fa fa-sticky-note"></i>
                 {/if}
 
-                {if="$value.private"}
-                  <span class="label label-private">{'Private'|t}</span>
-                {/if}
-
-                {$value.title}
+                <span class="linklist-link">{$value.title}</span>
               </a>
             </h2>
           </div>
@@ -138,6 +134,9 @@
                 class="linklist-item-infos-url pure-u-lg-5-8 pure-u-1">
                 <a href="{$value.real_url}" title="{$value.title}">
                   <i class="fa fa-link"></i> {$value.url}
+                </a>
+                <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}" title="{'Delete'|t}" class="delete-link">
+                  <i class="fa fa-trash"></i>
                 </a>
               </div>
             </div>

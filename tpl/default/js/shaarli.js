@@ -138,27 +138,6 @@ if (newVersionDismiss != null) {
     });
 }
 
-/**
- * Login button
- */
-var loginButton = document.getElementById('login-button');
-var loginBlock = document.getElementById('header-login-form');
-
-if (loginButton != null) {
-    loginButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        loginBlock.classList.toggle('open');
-        document.getElementById('content').style.boxShadow = 'none';
-    });
-}
-
-// Focus on login field.
-if (loginBlock != null) {
-    loginBlock.addEventListener('transitionend', function () {
-        loginBlock.firstElementChild.focus();
-    });
-}
-
 var hiddenReturnurl = document.getElementsByName('returnurl');
 if (hiddenReturnurl != null) {
     hiddenReturnurl.value = window.location.href;
@@ -173,15 +152,39 @@ if (autofocusElements != null) {
 }
 
 /**
- * Hide search bar, and display it on search click.
+ * Hide search bar
  */
-var searchBar = document.getElementById('search');
-var searchButton = document.getElementById('search-button');
-if (searchBar != null && searchButton != null) {
-    searchBar.classList.toggle('closed');
-    searchButton.addEventListener('click', function(event) {
-        event.preventDefault();
-        searchBar.classList.toggle('closed');
-        searchBar.classList.toggle('open');
+var search = document.getElementById('search');
+if (search != null) {
+    removeClass(search, 'open');
+}
+
+/**
+ * Handle sub menus/forms
+ */
+var openers = document.getElementsByClassName('subheader-opener');
+if (openers != null) {
+    console.log(openers);
+    [].forEach.call(openers, function(opener) {
+         opener.addEventListener('click', function(event) {
+             event.preventDefault();
+
+             var id = opener.getAttribute('data-open-id');
+             var sub = document.getElementById(id);
+
+             if (sub != null) {
+                [].forEach.call(document.getElementsByClassName('subheader-form'), function (element) {
+                    if (element != sub) {
+                        removeClass(element, 'open')
+                    }
+                 });
+
+                 sub.classList.toggle('open');
+             }
+         });
     });
+}
+
+function removeClass(element, classname) {
+    element.className = element.className.replace(new RegExp('(?:^|\\s)'+ classname + '(?:\\s|$)'), ' ');
 }
