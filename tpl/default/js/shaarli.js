@@ -152,19 +152,10 @@ if (autofocusElements != null) {
 }
 
 /**
- * Hide search bar
- */
-var search = document.getElementById('search');
-if (search != null) {
-    removeClass(search, 'open');
-}
-
-/**
  * Handle sub menus/forms
  */
 var openers = document.getElementsByClassName('subheader-opener');
 if (openers != null) {
-    console.log(openers);
     [].forEach.call(openers, function(opener) {
          opener.addEventListener('click', function(event) {
              event.preventDefault();

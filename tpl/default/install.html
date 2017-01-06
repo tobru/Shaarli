@@ -4,21 +4,15 @@
   {include="includes"}
 </head>
 <body>
-<div id="header" class="pure-u-0 pure-u-lg-visible">
-  <h1 id="header-title">
-    <a>Shaarli</a>
-  </h1>
-</div>
-<div class="clear"></div>
 
 {$ratioLabel='1-4'}
 {$ratioInput='3-4'}
 
 <form method="POST" action="#" name="installform" id="installform">
 <div class="pure-g">
-  <div class="pure-u-lg-1-6 pure-u-1-8"></div>
-  <div class="pure-u-lg-2-3 pure-u-3-4 page-form page-form-complete">
-    <h2 class="window-title">{'Install'|t}</h2>
+  <div class="pure-u-lg-1-6 pure-u-1-24"></div>
+  <div class="pure-u-lg-2-3 pure-u-22-24 page-form page-form-complete">
+    <h2 class="window-title">{'Install Shaarli'|t}</h2>
 
     <div class="center">
       {'It looks like it\'s the first time you run Shaarli. Please configure it.'|t}
@@ -87,7 +81,7 @@
     </div>
 
     <div class="pure-g">
-      <div class="pure-u-lg-{$ratioLabel} pure-u-1">
+      <div class="pure-u-lg-{$ratioLabel} pure-u-7-8">
         <div class="form-label">
           <label for="update">
             <span class="label-name">{'Check updates'|t}</span><br>
@@ -97,16 +91,15 @@
           </label>
         </div>
       </div>
-      <div class="pure-u-lg-{$ratioInput} pure-u-1 ">
+      <div class="pure-u-lg-{$ratioInput} pure-u-1-8">
         <div class="form-input">
           <input type="checkbox" name="updateCheck" id="update" checked="checked">
-
         </div>
       </div>
     </div>
 
     <div class="center">
-      <input type="submit" value="{'Create config'|t}" name="Save">
+      <input type="submit" value="{'Install'|t}" name="Save">
     </div>
   </div>
 </div>

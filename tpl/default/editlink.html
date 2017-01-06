@@ -10,8 +10,8 @@
     <div class="center">Shaare to: {$shaarlititle}</div>
   {/if}
   <div id="editlinkform" class="pure-g">
-    <div class="pure-u-lg-1-5 pure-u-1-8"></div>
-    <form method="post" name="linkform" class="page-form pure-u-lg-3-5 pure-u-3-4 page-form page-form-light">
+    <div class="pure-u-lg-1-5 pure-u-1-24"></div>
+    <form method="post" name="linkform" class="page-form pure-u-lg-3-5 pure-u-22-24 page-form page-form-light">
       <h2 class="window-title">{'Shaare'|t}</h2>
       <input type="hidden" name="lf_linkdate" value="{$link.linkdate}">
       {if="isset($link.id)"}
@@ -61,7 +61,7 @@
       <div>
         <input type="submit" value="{'Save'|t}" name="save_edit">
         {if="!$link_is_new"}
-          <input type="submit" value="{'Delete'|t}" name="delete_link" class="delete-link">
+          <input type="submit" value="{'Delete'|t}" name="delete_link" class="button-red">
         {/if}
       </div>
 

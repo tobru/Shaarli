@@ -175,46 +175,70 @@ pre {
     font-size: 0.8em;
 }
 
-#search {
-    position: fixed;
+#search, #search-linklist {
+    text-align: center;
     width: 100%;
 }
 
-#search input[type="text"] {
-    width: 250px;
+#search input[type="text"], #search-linklist input[type="text"] {
+    padding: 0 5px;
+    height: 30px;
+    width: 260px;
+    background: #f5f5f5;
+    border: medium none currentColor;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 1px rgba(0, 0, 0, 0.298) inset;
+    border-radius: 2px;
     color: #252525;
 }
 
 /* because chrome */
-#search input[type="text"]::-webkit-input-placeholder {
-    color: #252525;
+#search input[type="text"]::-webkit-input-placeholder,
+#search-linklist input[type="text"]::-webkit-input-placeholder {
+    color: #777777;
+}
+
+#search button,
+#search-linklist button {
+    background: transparent;
+    border: none;
 }
 
 #search button {
-    background: transparent;
-    border: none;
     color: #f5f5f5;
+}
+
+#search-linklist button {
+    color: #252525;
 }
 
 #search button:hover {
     color: #fff;
 }
 
+#search-linklist button:hover {
+    color: #000;
+}
+
+#search-linklist {
+    padding: 5px 0;
+}
+
 @media screen and (min-width: 64em) {
-    #search .searchform {
+    #search .searchform,
+    #search-linklist .searchform {
         margin-right: 25px;
         text-align: right;
     }
 
-    #search .tagfilter {
+    #search .tagfilter,
+    #search-linklist .tagfilter {
         margin-left: 25px;
         text-align: left;
     }
 }
 @media screen and (max-width: 64em) {
-    #search {
-        position: relative;
-        height: 60px;
+    #search, #search * {
+        visibility: hidden;
     }
 }
 
@@ -239,11 +263,6 @@ pre {
         visibility: visible;
     }
 }
-@media screen and (max-width: 64em) {
-    #search.subheader-form, .subheader-form.open * {
-        visibility: visible;
-    }
-}
 
 .subheader-form input[type="text"], .subheader-form input[type="password"], .subheader-form .remember-me {
     margin: 0 0 5px 0;
@@ -252,7 +271,7 @@ pre {
     width: 20%;
     background: #f5f5f5;
     border: medium none currentColor;
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
     color: #252525;
 }
@@ -316,6 +335,46 @@ pre {
 }
 
 /**
+ * Plugins additional forms
+ */
+.toolbar-plugin {
+    margin: 5px 0;
+    text-align: center;
+}
+
+.toolbar-plugin input[type="text"] {
+    padding: 0 5px;
+    height: 30px;
+    width: 300px;
+    background: #f5f5f5;
+    border: medium none currentColor;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 1px rgba(0, 0, 0, 0.298) inset;
+    border-radius: 2px;
+    color: #252525;
+}
+
+/* because chrome */
+.toolbar-plugin input[type="text"]::-webkit-input-placeholder {
+    color: #777777;
+}
+
+.toolbar-plugin input[type="submit"] {
+    padding: 0 10px;
+    height: 30px;
+    background: #f5f5f5;
+    border: medium none currentColor;
+    border-radius: 2px;
+    color: #252525;
+}
+
+@media screen and (max-width: 64em) {
+    .toolbar-plugin input[type="text"] {
+        width: 70%;
+
+    }
+}
+
+/**
  * CONTENT - LINKLIST PAGING
  * 64em -> lg
  */
@@ -369,14 +428,18 @@ pre {
     background: #f5f5f5;
 }
 
+.linksperpage a, .linksperpage input[type="text"] {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
 .linksperpage form {
     display: inline;
-    margin: 0 10px 0 0;
 }
 
 .linksperpage input[type="text"] {
-    width: 28px;
-    height: 12px;
+    height: 15px;
     margin: 0;
     padding: 3px 5px 3px 8px;
     background: #f5f5f5;
@@ -400,7 +463,20 @@ pre {
 }
 
 .linklist-item-title {
+    position: relative;
     background: #f5f5f5;
+}
+
+.linklist-item.private .linklist-item-title::before {
+    position: absolute;
+    left: 3px;
+    top: 0;
+    display: block;
+    content:"";
+    background: #F89406;
+    height: 95%;
+    width: 3px;
+    margin-top: 3px;
 }
 
 .linklist-item-title h2 {
@@ -417,6 +493,7 @@ pre {
 }
 
 .linklist-item-title .linklist-link {
+    font-size: 1.1em;
     color: #1b926c;
 }
 
@@ -454,6 +531,12 @@ pre {
     padding: 5px;
 }
 
+.linklist-item-editbuttons * {
+    display: block;
+    float: left;
+    margin: 0 1px;
+}
+
 .linklist-item-editbuttons a {
     font-size: 1em;
 }
@@ -469,11 +552,25 @@ pre {
 }
 
 .linklist-item-description {
+    position: relative;
     padding: 10px;
     background: #f5f5f5;
     font-family: Roboto Slab, Arial, sans-serif;
     word-wrap: break-word;
     color: #252525;
+}
+
+.linklist-item.private .linklist-item-description::before {
+    position: absolute;
+    left: 3px;
+    top: 0;
+    display: block;
+    content:"";
+    background: #F89406;
+    height: 95%;
+    width: 3px;
+    z-index: 9999;
+    #margin: 0;
 }
 
 .linklist-item-description a {
@@ -496,13 +593,13 @@ pre {
 }
 
 .linklist-item-infos {
-    padding: 5px 5px 0 5px;
+    padding: 8px 8px 5px 8px;
     background: #ddd;
     color: #252525;
 }
 
 .linklist-item-infos a {
-    color: #505050;
+    color: #252525;
     text-decoration: none;
 }
 
@@ -511,17 +608,14 @@ pre {
 }
 
 .linklist-item-infos .linklist-item-tags {
-    margin: 0 0 5px 0;
     font-size: 0.8em;
 }
 
 .linklist-item-infos .label-tag {
-    border: 1px solid #505050;
     font-size: 0.9em;
 }
 
 .linklist-item-infos .label-tag:hover {
-    border: 1px solid #000;
 }
 
 .linklist-item-infos-dateblock {
@@ -539,6 +633,17 @@ pre {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 0.8em;
+}
+
+.linklist-item-infos .mobile-buttons {
+    text-align: right;
+}
+
+.linklist-item-infos .linklist-plugin-icon {
+    display: inline-block;
+    margin: 0 2px;
+    width: 16px;
+    height: 16px;
 }
 
 /** 64em -> lg **/
@@ -576,10 +681,10 @@ pre {
  */
 .page-form {
     margin: 20px 0 0 0;
-    padding: 0 10px 0 10px;
     background: #f5f5f5;
     box-shadow: 1px 1px 2px #797979;
     color: #252525;
+    overflow: hidden;
 }
 
 .page-form .window-title {
@@ -609,16 +714,22 @@ pre {
     font-weight: bold;
 }
 
+.page-form p {
+    padding: 0 10px;
+    margin: 0;
+}
+
 .page-form input[type="text"],
 .page-form input[type="password"],
 .page-form textarea {
+    box-sizing: border-box;
     margin: 10px 0;
     padding: 5px 5px 3px 15px;
-    height: 30px;
-    width: 80%;
-    background: #f5f5f5;
+    height: 35px;
+    width: 90%;
+    background: #ebebeb;
     border: medium none currentColor;
-    border-radius: 5px;
+    border-radius: 2px;
     box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
     color: #252525;
 }
@@ -634,7 +745,7 @@ pre {
 /* because chrome */
 .page-form input[type="text"]::-webkit-input-placeholder,
 .page-form input[type="password"]::-webkit-input-placeholder {
-    color: #252525;
+    color: #777777;
 }
 
 .page-form input[type="submit"] {
@@ -646,6 +757,11 @@ pre {
     box-shadow: 1px 1px 1px #ddd, -1px -1px 6px #ddd, -1px 1px 2px #ddd, 1px -1px 2px #ddd;
     font-size: 1.2em;
     color: #f5f5f5;
+}
+
+
+.page-form input[type="submit"].button-red {
+    background: #ac2925;
 }
 
 .page-form select {
@@ -704,9 +820,8 @@ pre {
 }
 
 .page-form section {
-    margin-top: 20px;
+    margin: 10px 0 25px 0;
 }
-
 
 .page-form table {
     margin: auto;
@@ -715,12 +830,13 @@ pre {
 
 .page-form table .order {
     text-decoration: none;
+    color: #252525;
 }
 
 .page-form table, .page-form th, .page-form td {
     border-width: 1px 0;
     border-style: solid;
-    border-color: #b0ddce;
+    border-color: #aaaaaa;
 }
 
 .page-form th, .page-form td {
@@ -730,7 +846,7 @@ pre {
 
 /* Awesomeplete fix */
 .page-form .awesomplete {
-    width: 80%;
+    width: 90%;
 }
 
 .page-form .awesomplete input {
@@ -852,7 +968,6 @@ pre {
     }
 }
 
-
 /**
  * IMPORT
  */
@@ -882,13 +997,14 @@ pre {
  */
 #picwall_container {
     margin: 0 10px 10px 10px;
-    color: #fff;
-    background-color: #000;
+    color: #252525;
+    background-color: #f5f5f5;
     clear: both;
 }
 
 .picwall_pictureframe {
-    background-color: #000;
+    margin: 2px;
+    background-color: #f5f5f5;
     z-index: 5;
     position: relative;
     display: table-cell;
@@ -924,6 +1040,7 @@ pre {
 /* CSS to show title when hovering an image - no javascript required. */
 .picwall_pictureframe span.info {
     display: none;
+    font-family: Arial, sans-serif;
 }
 
 .picwall_pictureframe:hover span.info {
@@ -932,16 +1049,12 @@ pre {
     top: 0;
     left: 0;
     width: 90px;
+    height: 90px;
     font-weight: bold;
-    font-size: 8pt;
-    color: #fff;
+    font-size: 9pt;
+    color: #f5f5f5;
     text-align: left;
-    background-color: transparent;
-    background-color: rgba(0, 0, 0, 0.4);
-    /* FF3+, Saf3+, Opera 10.10+, Chrome, IE9 */
-    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#66000000, endColorstr=#66000000);
-    /* IE6IE9 */
-    text-shadow: 2px 2px 1px #000000;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 /**
