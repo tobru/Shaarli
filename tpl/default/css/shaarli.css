@@ -747,20 +747,35 @@ pre {
     color: #777777;
 }
 
-.page-form input[type="submit"] {
+.page-form input[type="submit"], .page-form a.button {
     margin: 15px 5px;
     height: 35px;
+    line-height: 35px;
     width: 150px;
     background: #1b926c;
+    color: #f5f5f5;
     border: none;
     box-shadow: 1px 1px 1px #ddd, -1px -1px 6px #ddd, -1px 1px 2px #ddd, 1px -1px 2px #ddd;
     font-size: 1.2em;
-    color: #f5f5f5;
+    text-decoration: none;
+    vertical-align: center;
+    font-weight: normal;
 }
 
 
-.page-form input[type="submit"].button-red {
+.page-form .button.button-red {
     background: #ac2925;
+}
+
+@media screen and (min-width: 64em) {
+    .page-form .submit-buttons {
+        position: relative;
+    }
+
+    .page-form .submit-buttons .button.button-red {
+        position: absolute;
+        right: 5%;
+    }
 }
 
 .page-form select {

@@ -58,10 +58,14 @@
         {/loop}
       </div>
 
-      <div>
+
+      <div class="submit-buttons">
         <input type="submit" value="{'Save'|t}" name="save_edit">
         {if="!$link_is_new"}
-          <input type="submit" value="{'Delete'|t}" name="delete_link" class="button-red">
+        <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}"
+           title="" name="delete_link" class="button button-red">
+          {'Delete'|t}
+        </a>
         {/if}
       </div>
 
