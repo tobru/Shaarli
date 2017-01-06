@@ -86,6 +86,9 @@ pre {
     background-color: #1b926c;
 }
 
+.anchor:target {
+    padding-top: 35px;
+}
 /**
  * MENU
  **/
@@ -107,9 +110,9 @@ pre {
     height: inherit;
 }
 
-.shaarli-menu.open {
-    max-height: 500px;
-    transition: max-height 0.75s;
+.head-logo {
+    float: left;
+    margin: 0 5px 0 0;
 }
 
 .pure-menu-link,
@@ -612,10 +615,7 @@ pre {
 }
 
 .linklist-item-infos .label-tag {
-    font-size: 0.9em;
-}
-
-.linklist-item-infos .label-tag:hover {
+    font-size: 1em;
 }
 
 .linklist-item-infos-dateblock {
@@ -727,10 +727,9 @@ pre {
     padding: 5px 5px 3px 15px;
     height: 35px;
     width: 90%;
-    background: #ebebeb;
-    border: medium none currentColor;
+    background: #eeeeee;
+    border: solid 1px #d8d8d8;
     border-radius: 2px;
-    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.078), 0 1px 4px rgba(0, 0, 0, 0.298) inset;
     color: #252525;
 }
 
@@ -886,7 +885,7 @@ pre {
         text-align: left;
         margin: 10px 0 0 0;
     }
-    
+
     .timezone-continent:after {
         content:"\a\a";
         white-space: pre;

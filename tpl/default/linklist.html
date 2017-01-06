@@ -100,6 +100,7 @@
     <div class="pure-u-lg-2-24 pure-u-1-24"></div>
     <div class="pure-u-lg-20-24 pure-u-22-24">
       {loop="links"}
+        <div class="anchor" id="{$value.shorturl}"></div>
         <div class="linklist-item{if="$value.class"} {$value.class}{/if}">
 
           <div class="linklist-item-title">
@@ -115,7 +116,7 @@
             {/if}
 
             <h2>
-              <a href="{$value.real_url}" id="{$value.shorturl}" class="">
+              <a href="{$value.real_url}">
                 {if="strpos($value.url, $value.shorturl) === false"}
                   <i class="fa fa-external-link"></i>
                 {else}

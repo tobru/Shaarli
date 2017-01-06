@@ -103,7 +103,7 @@ var foldButtons = document.querySelectorAll('.fold-button');
 var deleteLinks = document.querySelectorAll('.delete-link');
 [].forEach.call(deleteLinks, function(deleteLink) {
     deleteLink.addEventListener('click', function(event) {
-        if(!confirm('Are you sure you want to delete this link ?')) {
+        if(! confirm('Are you sure you want to delete this link ?')) {
             event.preventDefault();
         }
     });
