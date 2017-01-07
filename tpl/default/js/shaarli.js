@@ -56,46 +56,79 @@ function getParentByClass(el, className) {
 /**
  * Fold/Expand shaares description and thumbnail.
  */
-var foldButtons = document.querySelectorAll('.fold-button');
-[].forEach.call(foldButtons, function(foldButton) {
-    // Retrieve description
-    var description = null;
-    var thumbnail = null;
-    var linklistItem = getParentByClass(foldButton, 'linklist-item');
-    if (linklistItem != null) {
-        description = linklistItem.querySelector('.linklist-item-description');
-        thumbnail = linklistItem.querySelector('.linklist-item-thumbnail');
-        if (description != null || thumbnail != null) {
-            foldButton.style.display = 'inline';
+(function (window, document) {
+    var foldAllButtons = document.getElementsByClassName('fold-all');
+    var foldButtons = document.getElementsByClassName('fold-button');
+
+    [].forEach.call(foldButtons, function (foldButton) {
+        // Retrieve description
+        var description = null;
+        var thumbnail = null;
+        var linklistItem = getParentByClass(foldButton, 'linklist-item');
+        if (linklistItem != null) {
+            description = linklistItem.querySelector('.linklist-item-description');
+            thumbnail = linklistItem.querySelector('.linklist-item-thumbnail');
+            if (description != null || thumbnail != null) {
+                foldButton.style.display = 'inline';
+            }
+        }
+
+        foldButton.addEventListener('click', function (event) {
+            event.preventDefault();
+            toggleFold(event.target, description, thumbnail);
+        });
+    });
+
+    if (foldAllButtons != null) {
+        [].forEach.call(foldAllButtons, function (foldAllButton) {
+            foldAllButton.addEventListener('click', function (event) {
+                event.preventDefault();
+                [].forEach.call(foldButtons, function (foldButton) {
+                    // Retrieve description
+                    var description = null;
+                    var thumbnail = null;
+                    var linklistItem = getParentByClass(foldButton, 'linklist-item');
+                    if (linklistItem != null) {
+                        description = linklistItem.querySelector('.linklist-item-description');
+                        thumbnail = linklistItem.querySelector('.linklist-item-thumbnail');
+                        if (description != null || thumbnail != null) {
+                            foldButton.style.display = 'inline';
+                        }
+                    }
+
+                    toggleFold(foldButton.firstElementChild, description, thumbnail);
+                });
+                foldAllButton.firstElementChild.classList.toggle('fa-chevron-down');
+                foldAllButton.firstElementChild.classList.toggle('fa-chevron-up');
+            });
+        });
+    }
+})(this, this.document);
+
+function toggleFold(button, description, thumb)
+{
+    // Switch fold/expand - up = fold
+    if (button.classList.contains('fa-chevron-up')) {
+        button.title = 'Expand';
+        if (description != null) {
+            description.style.display = 'none';
+        }
+        if (thumb != null) {
+            thumb.style.display = 'none';
         }
     }
-
-    foldButton.addEventListener('click', function(event) {
-        event.preventDefault();
-
-        // Switch fold/expand - up = fold
-        if (event.target.classList.contains('fa-chevron-up')) {
-            event.target.title = 'Expand';
-            if (description != null) {
-                description.style.display = 'none';
-            }
-            if (thumbnail != null) {
-                thumbnail.style.display = 'none';
-            }
+    else {
+        button.title = 'Fold';
+        if (description != null) {
+            description.style.display = 'block';
         }
-        else {
-            event.target.title = 'Fold';
-            if (description != null) {
-                description.style.display = 'block';
-            }
-            if (thumbnail != null) {
-                thumbnail.style.display = 'block';
-            }
+        if (thumb != null) {
+            thumb.style.display = 'block';
         }
-        event.target.classList.toggle('fa-chevron-down');
-        event.target.classList.toggle('fa-chevron-up');
-    });
-});
+    }
+    button.classList.toggle('fa-chevron-down');
+    button.classList.toggle('fa-chevron-up');
+}
 
 /**
  * Confirmation message before deletion.
