@@ -212,3 +212,13 @@ if (openers != null) {
 function removeClass(element, classname) {
     element.className = element.className.replace(new RegExp('(?:^|\\s)'+ classname + '(?:\\s|$)'), ' ');
 }
+
+/**
+ * Remove CSS target padding (for fixed bar)
+ */
+var anchor = document.querySelector('.anchor:target');
+if (anchor != null) {
+    var padsize = anchor.clientHeight;
+    this.window.scroll(0, this.window.scrollY - padsize);
+    anchor.style.paddingTop = 0;
+}

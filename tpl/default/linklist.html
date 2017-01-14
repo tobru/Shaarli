@@ -6,7 +6,17 @@
 <body>
 {include="page.header"}
 
+<div id="linkcount" class="pure-u-0 pure-u-lg-visible">
+  {if="!empty($linkcount)"}
+  <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
+  {if="$privateLinkcount>0"}
+  <br><span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
+  {/if}
+  {/if}
+</div>
+
 <div id="search-linklist">
+
   <div class="pure-g">
     <div class="pure-u-1 pure-u-lg-1-2">
       <form method="GET" class="searchform" name="searchform">
@@ -50,22 +60,26 @@
 {/loop}
 
 <div id="linklist">
+  <div class="pure-g">
+    <div class="pure-u-lg-2-24 pure-u-1-24"></div>
+    <div class="pure-u-lg-20-24 pure-u-22-24">
+      <div id="linkcount" class="pure-u-lg-0 center">
+        {if="!empty($linkcount)"}
+        <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
+        {if="$privateLinkcount>0"}
+        &middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
+        {/if}
+        {/if}
+      </div>
 
-  <div id="linkcount" class="center">
-    {if="!empty($linkcount)"}
-    <span class="strong">{$linkcount}</span> {function="t('shaare', 'shaares', $linkcount)"}
-    {if="$privateLinkcount>0"}
-    &middot; <span class="strong">{$privateLinkcount}</span> {function="t('private link', 'private links', $privateLinkcount)"}
-    {/if}
-    {/if}
-  </div>
+      {include="linklist.paging"}
 
-  {include="linklist.paging"}
-
-  <div id="plugin_zone_start_linklist" class="plugin_zone">
-    {loop="$plugin_start_zone"}
-      {$value}
-    {/loop}
+      <div id="plugin_zone_start_linklist" class="plugin_zone">
+        {loop="$plugin_start_zone"}
+          {$value}
+        {/loop}
+      </div>
+    </div>
   </div>
 
   {if="count($links)==0"}
@@ -220,7 +234,12 @@
     {/loop}
   </div>
 
-  {include="linklist.paging"}
+<div class="pure-g">
+  <div class="pure-u-lg-2-24 pure-u-1-24"></div>
+  <div class="pure-u-lg-20-24 pure-u-22-24">
+    {include="linklist.paging"}
+  </div>
+</div>
 
 {include="page.footer"}
 </body>
