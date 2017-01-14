@@ -216,11 +216,13 @@ window.onload = function () {
     /**
      * Remove CSS target padding (for fixed bar)
      */
-    var anchor = document.querySelector(location.hash);
-    if (anchor != null) {
-        var padsize = anchor.clientHeight;
-        console.log(document.querySelector(location.hash).clientHeight);
-        this.window.scroll(0, this.window.scrollY - padsize);
-        anchor.style.paddingTop = 0;
+    if (location.hash != '') {
+        var anchor = document.querySelector(location.hash);
+        if (anchor != null) {
+            var padsize = anchor.clientHeight;
+            console.log(document.querySelector(location.hash).clientHeight);
+            this.window.scroll(0, this.window.scrollY - padsize);
+            anchor.style.paddingTop = 0;
+        }
     }
 };
