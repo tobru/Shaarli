@@ -760,11 +760,16 @@ pre {
     text-decoration: none;
     vertical-align: center;
     font-weight: normal;
+    display: inline-block;
 }
 
 
 .page-form .button.button-red {
     background: #ac2925;
+}
+
+.page-form .submit-buttons {
+    margin-bottom: 10px;
 }
 
 @media screen and (min-width: 64em) {
@@ -775,6 +780,13 @@ pre {
     .page-form .submit-buttons .button.button-red {
         position: absolute;
         right: 5%;
+    }
+}
+
+@media screen and (max-width: 64em) {
+    .page-form .submit-buttons .button {
+        display: block;
+        margin: auto;
     }
 }
 

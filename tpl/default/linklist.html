@@ -199,7 +199,7 @@
                 </a>
                 {if="isLoggedIn()"}
                   <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}"
-                     title="{'Delete'|t}" class="delete-link pure-u-0 pure-u-lg-visible">
+                     title="{'Delete'|t}" class="delete-link pure-u-0 pure-u-lg-visible confirm-delete">
                     <i class="fa fa-trash"></i>
                   </a>
                 {/if}
@@ -215,7 +215,7 @@
                 {/if}
                 {if="isLoggedIn()"}
                   <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}"
-                     title="{'Delete'|t}" class="delete-link">
+                     title="{'Delete'|t}" class="delete-link confirm-delete">
                     <i class="fa fa-trash"></i>
                   </a>
                 {/if}

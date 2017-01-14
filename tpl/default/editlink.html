@@ -59,11 +59,11 @@
       </div>
 
 
-      <div class="submit-buttons">
-        <input type="submit" value="{'Save'|t}" name="save_edit">
+      <div class="submit-buttons center">
+        <input type="submit" value="{'Save'|t}" name="save_edit" class="">
         {if="!$link_is_new"}
         <a href="?delete_link&amp;lf_linkdate={$value.id}&amp;token={$token}"
-           title="" name="delete_link" class="button button-red">
+           title="" name="delete_link" class="button button-red confirm-delete">
           {'Delete'|t}
         </a>
         {/if}

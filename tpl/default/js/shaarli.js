@@ -133,7 +133,7 @@ function toggleFold(button, description, thumb)
 /**
  * Confirmation message before deletion.
  */
-var deleteLinks = document.querySelectorAll('.delete-link');
+var deleteLinks = document.querySelectorAll('.confirm-delete');
 [].forEach.call(deleteLinks, function(deleteLink) {
     deleteLink.addEventListener('click', function(event) {
         if(! confirm('Are you sure you want to delete this link ?')) {
