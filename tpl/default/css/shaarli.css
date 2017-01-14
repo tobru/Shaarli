@@ -319,12 +319,18 @@ pre {
 .subheader-form input[type="submit"] {
     display: inline-block;
     margin: 0 0 5px 0;
-    height: 25px;
+    padding: 4px 0 4px 0;
+    height: 28px;
     width: 100px;
-    background: #0C7653;
-    border: medium none currentColor;
-    box-shadow: 1px 1px 2px #005C3E, -1px -1px 2px #005C3E;
+    background: #1b926c;
+    border: 1px solid #f5f5f5;
     color: #f5f5f5;
+    border-radius: 2px;
+}
+
+.subheader-form input[type="submit"]:hover {
+    background: #f5f5f5;
+    color: #1b926c;
 }
 
 .new-version-message {
