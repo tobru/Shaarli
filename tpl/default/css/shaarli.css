@@ -110,6 +110,11 @@ pre {
     height: inherit;
 }
 
+.shaarli-menu.open {
+    max-height: 500px;
+    transition: max-height 0.75s;
+}
+
 .head-logo {
     float: left;
     margin: 0 5px 0 0;
